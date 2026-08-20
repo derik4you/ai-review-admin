@@ -178,7 +178,23 @@ export default function AdminStandsPage() {
 
   const assignedCount = stands.filter((s) => s.status === 'ASSIGNED' || s.businessId).length;
   const unassignedCount = stands.length - assignedCount;
-  const currentOrigin = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
+  const [customOrigin, setCustomOrigin] = useState<string>('');
+
+  const getResolvedCustomerOrigin = () => {
+    if (customOrigin.trim()) return customOrigin.trim().replace(/\/$/, '');
+    if (typeof window === 'undefined') return 'http://localhost:3000';
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'http://localhost:3000';
+    }
+    const envUrl = process.env.NEXT_PUBLIC_STORE_URL || process.env.NEXT_PUBLIC_APP_URL;
+    if (envUrl) return envUrl.replace(/\/$/, '');
+    if (window.location.hostname.includes('-admin')) {
+      return window.location.origin.replace('-admin', '');
+    }
+    return window.location.origin;
+  };
+
+  const currentOrigin = getResolvedCustomerOrigin();
 
   const handleCopyLink = async (text: string) => {
     try {
@@ -387,7 +403,8 @@ export default function AdminStandsPage() {
                       id={`qr-svg-${s.standNumber}`}
                       value={standUrl}
                       size={110}
-                      level="M"
+                      level="H"
+                      includeMargin={true}
                     />
                     <span className="mt-1 text-[9px] font-bold text-[#5f6368] flex items-center space-x-1 group-hover:text-[#1a73e8]">
                       <Eye className="w-2.5 h-2.5" />
@@ -573,3 +590,5 @@ export default function AdminStandsPage() {
     </div>
   );
 }
+
+
