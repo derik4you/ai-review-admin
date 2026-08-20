@@ -1,0 +1,159 @@
+[
+  {
+    "id": "biz-1787213026208",
+    "loginId": "prakashvadde",
+    "passwordHash": "$2b$10$eBK45GmjRYap4jqe3aYmaeSOQVt75HU1.4wjjZNIkcBT64eamqK3u",
+    "name": "navratn corner",
+    "slug": "navratn-corner-959",
+    "category": "nasta center",
+    "googlePlaceId": "https://search.google.com/local/writereview?placeid=ChIJSZSeu6efwzsR7HQ7ISZ9h_0",
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJSZSeu6efwzsR7HQ7ISZ9h_0",
+    "keywords": "pohe, upma",
+    "positiveTags": "[\"pohe\",\"upma\"]",
+    "createdAt": "2026-08-20T08:03:46.209Z",
+    "ownerEmail": null,
+    "description": "Quality service and excellent customer satisfaction."
+  },
+  {
+    "id": "biz-1787212953017",
+    "loginId": "prakashvadde2985_gmail_com",
+    "passwordHash": "$2b$10$bvj7bZIG7b6bS9e5nq5a8O5Rryy1ESMlioKViJkvff4ArZ9Aqqdry",
+    "name": "kalubai corner",
+    "slug": "kalubai-corner-275",
+    "category": "nasta center",
+    "googlePlaceId": "dont know this",
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=dont know this",
+    "keywords": "pohe, upma",
+    "positiveTags": "[\"pohe\",\"upma\"]",
+    "createdAt": "2026-08-20T08:02:33.017Z",
+    "ownerEmail": null
+  },
+  {
+    "id": "biz-1787212365400",
+    "loginId": "test_store_001",
+    "passwordHash": "$2b$10$9YXXloMCtmk4HGE/JERj7OEN77qJ96YDb59atVEw8nETAnIz5sI1i",
+    "name": "Test Coffee House",
+    "slug": "test-coffee-house-217",
+    "category": "Cafe",
+    "googlePlaceId": "ChIJtest123",
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJtest123",
+    "keywords": "great coffee, cozy atmosphere, fast service",
+    "positiveTags": "[\"great coffee\",\"cozy atmosphere\",\"fast service\"]",
+    "createdAt": "2026-08-20T07:52:45.400Z",
+    "ownerEmail": null
+  },
+  {
+    "id": "cmt16etwv000o2hlc4fri06fl",
+    "name": "My Store",
+    "slug": "my-store-868",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T07:05:34.362Z",
+    "ownerEmail": "owner-1787209530220@goldenspoon.com"
+  },
+  {
+    "id": "cmt16civ5000l2hlcsofzrb2o",
+    "name": "My Store",
+    "slug": "my-store-554",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T07:03:46.055Z",
+    "ownerEmail": "owner-1787209426028@goldenspoon.com",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null
+  },
+  {
+    "id": "cmt16bodi000i2hlc9zvlbnt1",
+    "name": "My Store",
+    "slug": "my-store-506",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T07:03:06.535Z",
+    "ownerEmail": "owner-1787209386450@goldenspoon.com",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null
+  },
+  {
+    "id": "cmt16ak03000f2hlck9vy4r6i",
+    "name": "My Store",
+    "slug": "my-store-913",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T07:02:14.222Z",
+    "ownerEmail": "owner-1787209332170@goldenspoon.com"
+  },
+  {
+    "id": "cmt167wnk000e2hlc0g7gugat",
+    "name": "My Store",
+    "slug": "my-store-262",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T07:00:10.652Z",
+    "ownerEmail": "owner-1787209210439@goldenspoon.com"
+  },
+  {
+    "id": "cmt166i8g000d2hlcu8z1rkr7",
+    "name": "My Store",
+    "slug": "my-store-644",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T06:59:05.290Z",
+    "ownerEmail": "owner-1787209145269@goldenspoon.com"
+  },
+  {
+    "id": "cmt1622zb000c2hlcq4fxnelc",
+    "name": "My Store",
+    "slug": "my-store-372",
+    "category": "Restaurant",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T06:55:38.918Z",
+    "ownerEmail": "owner@goldenspoon.com"
+  },
+  {
+    "id": "cmt115tr8000013kociy6kfk2",
+    "name": "ambika corner",
+    "slug": "ambika-corner-587",
+    "category": "food corner",
+    "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
+    "createdAt": "2026-08-20T04:44:01.931Z",
+    "ownerEmail": "Store Owner",
+    "description": "Quality service and excellent customer satisfaction.",
+    "googleReviewUrl": "https://search.google.com/local/writereview",
+    "googlePlaceId": null
+  },
+  {
+    "id": "biz-1",
+    "name": "Bangalore House",
+    "slug": "banglore-house-701",
+    "category": "South Indian Restaurant",
+    "description": "Authentic South Indian Dosa & Filter Coffee cafe.",
+    "googleReviewUrl": "https://search.google.com/local/writereview",
+    "positiveTags": "[\"Fresh Dosa\",\"Filter Coffee\",\"Great Service\",\"Clean Ambience\"]",
+    "createdAt": "2026-08-20T04:38:03.163Z",
+    "ownerEmail": "owner@bangalorehouse.com"
+  },
+  {
+    "id": "biz-2",
+    "name": "FitGym Center",
+    "slug": "fitgym-center",
+    "category": "Fitness Gym",
+    "description": "Premium fitness club with modern equipment and personal trainers.",
+    "googleReviewUrl": "https://search.google.com/local/writereview",
+    "positiveTags": "[\"Modern Equipment\",\"Expert Trainers\",\"Clean Locker Rooms\"]",
+    "createdAt": "2026-08-20T04:38:03.163Z",
+    "ownerEmail": "owner@fitgym.com"
+  },
+  {
+    "id": "biz-3",
+    "name": "Cafe Delight",
+    "slug": "cafe-delight",
+    "category": "Coffee Cafe",
+    "description": "Artisanal coffee and fresh bakery pastries in town.",
+    "googleReviewUrl": "https://search.google.com/local/writereview",
+    "positiveTags": "[\"Artisanal Coffee\",\"Fresh Pastries\",\"Cozy Vibe\"]",
+    "createdAt": "2026-08-20T04:38:03.163Z",
+    "ownerEmail": "owner@cafedelight.com"
+  }
+]
