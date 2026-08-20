@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Building2, Plus, Store, UserCheck, Star, MessageSquare, RefreshCw, X, Search } from 'lucide-react';
+import { Building2, Plus, Store, UserCheck, Star, MessageSquare, RefreshCw, X, Search, Copy, Check, ExternalLink } from 'lucide-react';
 
 interface BusinessSummary {
   id: string;
@@ -44,6 +44,7 @@ export default function AdminBusinessesPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
 
   // Form state
   const [name, setName] = useState<string>('');
@@ -214,7 +215,23 @@ export default function AdminBusinessesPage() {
                     </td>
 
                     <td className="py-4 px-4 font-mono text-[#1a73e8]">
-                      /biz/{b.slug}
+                      <div className="flex items-center space-x-2">
+                        <span className="font-bold">/biz/{b.slug}</span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const fullUrl = `https://ai-review-ecru.vercel.app/biz/${b.slug}`;
+                            navigator.clipboard.writeText(fullUrl);
+                            setCopiedSlug(b.id);
+                            setTimeout(() => setCopiedSlug(null), 2000);
+                          }}
+                          className="px-2 py-1 rounded-md bg-[#e8f0fe] hover:bg-[#d2e3fc] text-[#1a73e8] text-[10px] font-bold flex items-center space-x-1 border border-[#d2e3fc]"
+                          title="Copy Direct Review URL for Cloudflare"
+                        >
+                          {copiedSlug === b.id ? <Check className="w-3 h-3 text-[#137333]" /> : <Copy className="w-3 h-3" />}
+                          <span>{copiedSlug === b.id ? 'Copied' : 'Cloudflare URL'}</span>
+                        </button>
+                      </div>
                     </td>
 
                     <td className="py-4 px-4">
@@ -362,3 +379,4 @@ export default function AdminBusinessesPage() {
     </div>
   );
 }
+
