@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
@@ -157,7 +157,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="p-3 border-t border-[#dadce0] bg-[#f8f9fa]">
                 <div className={`flex items-center space-x-3 p-2 rounded-xl bg-white border border-[#dadce0] ${!sidebarOpen && 'justify-center'}`}>
                   <div className="w-8 h-8 rounded-full bg-[#fef7e0] border border-[#feefc3] text-[#b06000] font-bold flex items-center justify-center text-xs flex-shrink-0">
-                    👑
+                    ðŸ‘‘
                   </div>
                   {sidebarOpen && (
                     <div className="space-y-0.5 truncate">
@@ -177,7 +177,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <footer className="bg-white border-t border-[#dadce0] py-3 text-xs text-[#5f6368] z-40">
             <div className="w-full px-4 sm:px-6 flex items-center justify-between">
-              <span>ReviewEasy AI • Standalone Admin Panel</span>
+              <span>ReviewEasy AI â€¢ Standalone Admin Panel</span>
               <span>Role: ADMIN</span>
             </div>
           </footer>
@@ -186,3 +186,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
