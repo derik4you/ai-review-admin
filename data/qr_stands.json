@@ -1,35 +1,35 @@
 [
   {
     "standNumber": 1,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:40:14.355Z"
+    "status": "ASSIGNED",
+    "businessId": "cmt167wnk000e2hlc0g7gugat",
+    "businessName": "My Store",
+    "businessSlug": "my-store-262",
+    "updatedAt": "2026-08-20T10:16:51.622Z"
   },
   {
     "standNumber": 2,
     "status": "ASSIGNED",
-    "businessId": "cmt115tr8000013kociy6kfk2",
-    "businessName": "ambika corner",
-    "businessSlug": "ambika-corner-587",
-    "updatedAt": "2026-08-20T08:20:41.610Z"
+    "businessId": "biz-1",
+    "businessName": "Bangalore House",
+    "businessSlug": "banglore-house-701",
+    "updatedAt": "2026-08-20T07:09:09.715Z"
   },
   {
     "standNumber": 3,
-    "status": "ASSIGNED",
-    "businessId": "biz-1787213026208",
-    "businessName": "navratn corner",
-    "businessSlug": "navratn-corner-959",
-    "updatedAt": "2026-08-20T08:39:14.077Z"
-  },
-  {
-    "standNumber": 4,
     "status": "UNASSIGNED",
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:36:52.113Z"
+    "updatedAt": "2026-08-20T10:16:23.007Z"
+  },
+  {
+    "standNumber": 4,
+    "status": "ASSIGNED",
+    "businessId": "biz-1",
+    "businessName": "Bangalore House",
+    "businessSlug": "banglore-house-701",
+    "updatedAt": "2026-08-20T06:46:35.811Z"
   },
   {
     "standNumber": 5,
@@ -37,7 +37,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:27.458Z"
   },
   {
     "standNumber": 6,
@@ -45,7 +45,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:28.073Z"
   },
   {
     "standNumber": 7,
@@ -53,7 +53,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:28.558Z"
   },
   {
     "standNumber": 8,
@@ -61,7 +61,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:28.856Z"
   },
   {
     "standNumber": 9,
@@ -69,7 +69,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:29.230Z"
   },
   {
     "standNumber": 10,
@@ -77,7 +77,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:29.656Z"
   },
   {
     "standNumber": 11,
@@ -85,7 +85,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:30.678Z"
   },
   {
     "standNumber": 12,
@@ -93,7 +93,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:31.349Z"
   },
   {
     "standNumber": 13,
@@ -101,7 +101,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:32.928Z"
   },
   {
     "standNumber": 14,
@@ -109,7 +109,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:34.823Z"
   },
   {
     "standNumber": 15,
@@ -117,7 +117,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:36.764Z"
   },
   {
     "standNumber": 16,
@@ -125,7 +125,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:39.175Z"
   },
   {
     "standNumber": 17,
@@ -133,7 +133,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:40.086Z"
   },
   {
     "standNumber": 18,
@@ -141,7 +141,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:40.972Z"
   },
   {
     "standNumber": 19,
@@ -149,7 +149,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:42.327Z"
   },
   {
     "standNumber": 20,
@@ -157,7 +157,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:43.882Z"
   },
   {
     "standNumber": 21,
@@ -165,7 +165,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:44.880Z"
   },
   {
     "standNumber": 22,
@@ -173,7 +173,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:45.333Z"
   },
   {
     "standNumber": 23,
@@ -181,7 +181,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:45.527Z"
   },
   {
     "standNumber": 24,
@@ -189,7 +189,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:45.974Z"
   },
   {
     "standNumber": 25,
@@ -197,7 +197,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:47.121Z"
   },
   {
     "standNumber": 26,
@@ -205,7 +205,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:48.287Z"
   },
   {
     "standNumber": 27,
@@ -213,7 +213,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:48.738Z"
   },
   {
     "standNumber": 28,
@@ -221,7 +221,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:48.960Z"
   },
   {
     "standNumber": 29,
@@ -229,7 +229,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:49.142Z"
   },
   {
     "standNumber": 30,
@@ -237,7 +237,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:49.277Z"
   },
   {
     "standNumber": 31,
@@ -245,7 +245,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:49.422Z"
   },
   {
     "standNumber": 32,
@@ -253,7 +253,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:49.599Z"
   },
   {
     "standNumber": 33,
@@ -261,7 +261,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:49.748Z"
   },
   {
     "standNumber": 34,
@@ -269,7 +269,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:49.884Z"
   },
   {
     "standNumber": 35,
@@ -277,7 +277,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.022Z"
   },
   {
     "standNumber": 36,
@@ -285,7 +285,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.178Z"
   },
   {
     "standNumber": 37,
@@ -293,7 +293,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.333Z"
   },
   {
     "standNumber": 38,
@@ -301,7 +301,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.479Z"
   },
   {
     "standNumber": 39,
@@ -309,7 +309,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.592Z"
   },
   {
     "standNumber": 40,
@@ -317,7 +317,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.706Z"
   },
   {
     "standNumber": 41,
@@ -325,7 +325,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.827Z"
   },
   {
     "standNumber": 42,
@@ -333,7 +333,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.950Z"
   },
   {
     "standNumber": 43,
@@ -341,7 +341,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.097Z"
   },
   {
     "standNumber": 44,
@@ -349,7 +349,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.563Z"
   },
   {
     "standNumber": 45,
@@ -357,7 +357,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:52.613Z"
   },
   {
     "standNumber": 46,
@@ -365,7 +365,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:54.242Z"
   },
   {
     "standNumber": 47,
@@ -373,7 +373,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:55.475Z"
   },
   {
     "standNumber": 48,
@@ -381,7 +381,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.040Z"
   },
   {
     "standNumber": 49,
@@ -389,7 +389,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.176Z"
   },
   {
     "standNumber": 50,
@@ -397,7 +397,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.332Z"
   },
   {
     "standNumber": 51,
@@ -405,7 +405,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.477Z"
   },
   {
     "standNumber": 52,
@@ -413,7 +413,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.618Z"
   },
   {
     "standNumber": 53,
@@ -421,7 +421,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.751Z"
   },
   {
     "standNumber": 54,
@@ -429,7 +429,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.880Z"
   },
   {
     "standNumber": 55,
@@ -437,7 +437,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.043Z"
   },
   {
     "standNumber": 56,
@@ -445,7 +445,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.389Z"
   },
   {
     "standNumber": 57,
@@ -453,7 +453,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:52.365Z"
   },
   {
     "standNumber": 58,
@@ -461,7 +461,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:53.995Z"
   },
   {
     "standNumber": 59,
@@ -469,7 +469,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:55.461Z"
   },
   {
     "standNumber": 60,
@@ -477,7 +477,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:52.398Z"
   },
   {
     "standNumber": 61,
@@ -485,7 +485,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:54.513Z"
   },
   {
     "standNumber": 62,
@@ -493,7 +493,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:55.581Z"
   },
   {
     "standNumber": 63,
@@ -501,7 +501,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.678Z"
   },
   {
     "standNumber": 64,
@@ -509,7 +509,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.801Z"
   },
   {
     "standNumber": 65,
@@ -517,7 +517,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:50.945Z"
   },
   {
     "standNumber": 66,
@@ -525,7 +525,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.096Z"
   },
   {
     "standNumber": 67,
@@ -533,7 +533,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.577Z"
   },
   {
     "standNumber": 68,
@@ -541,7 +541,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:52.606Z"
   },
   {
     "standNumber": 69,
@@ -549,7 +549,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:55.591Z"
   },
   {
     "standNumber": 70,
@@ -557,7 +557,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.567Z"
   },
   {
     "standNumber": 71,
@@ -565,7 +565,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:52.643Z"
   },
   {
     "standNumber": 72,
@@ -573,7 +573,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:54.261Z"
   },
   {
     "standNumber": 73,
@@ -581,7 +581,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:55.503Z"
   },
   {
     "standNumber": 74,
@@ -589,7 +589,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 75,
@@ -597,7 +597,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 76,
@@ -605,7 +605,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 77,
@@ -613,7 +613,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 78,
@@ -621,7 +621,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 79,
@@ -629,7 +629,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 80,
@@ -637,7 +637,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.537Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 81,
@@ -645,7 +645,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 82,
@@ -653,7 +653,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 83,
@@ -661,7 +661,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 84,
@@ -669,7 +669,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 85,
@@ -677,7 +677,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 86,
@@ -685,7 +685,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 87,
@@ -693,7 +693,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 88,
@@ -701,7 +701,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 89,
@@ -709,7 +709,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 90,
@@ -717,7 +717,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 91,
@@ -725,7 +725,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 92,
@@ -733,7 +733,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 93,
@@ -741,7 +741,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 94,
@@ -749,7 +749,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 95,
@@ -757,7 +757,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 96,
@@ -765,7 +765,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 97,
@@ -773,7 +773,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 98,
@@ -781,7 +781,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 99,
@@ -789,7 +789,7 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   },
   {
     "standNumber": 100,
@@ -797,86 +797,6 @@
     "businessId": null,
     "businessName": null,
     "businessSlug": null,
-    "updatedAt": "2026-08-20T08:33:21.538Z"
-  },
-  {
-    "standNumber": 101,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 102,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 103,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 104,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 105,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 106,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 107,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 108,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 109,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
-  },
-  {
-    "standNumber": 110,
-    "status": "UNASSIGNED",
-    "businessId": null,
-    "businessName": null,
-    "businessSlug": null,
-    "updatedAt": "2026-08-20T08:34:39.937Z"
+    "updatedAt": "2026-08-20T10:16:51.626Z"
   }
 ]

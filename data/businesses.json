@@ -6,8 +6,8 @@
     "name": "navratn corner",
     "slug": "navratn-corner-959",
     "category": "nasta center",
-    "googlePlaceId": "https://search.google.com/local/writereview?placeid=ChIJSZSeu6efwzsR7HQ7ISZ9h_0",
-    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJSZSeu6efwzsR7HQ7ISZ9h_0",
+    "googlePlaceId": "dont know this",
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=dont know this",
     "keywords": "pohe, upma",
     "positiveTags": "[\"pohe\",\"upma\"]",
     "createdAt": "2026-08-20T08:03:46.209Z",
@@ -26,7 +26,8 @@
     "keywords": "pohe, upma",
     "positiveTags": "[\"pohe\",\"upma\"]",
     "createdAt": "2026-08-20T08:02:33.017Z",
-    "ownerEmail": null
+    "ownerEmail": null,
+    "description": null
   },
   {
     "id": "biz-1787212365400",
@@ -40,7 +41,8 @@
     "keywords": "great coffee, cozy atmosphere, fast service",
     "positiveTags": "[\"great coffee\",\"cozy atmosphere\",\"fast service\"]",
     "createdAt": "2026-08-20T07:52:45.400Z",
-    "ownerEmail": null
+    "ownerEmail": null,
+    "description": null
   },
   {
     "id": "cmt16etwv000o2hlc4fri06fl",
@@ -49,7 +51,13 @@
     "category": "Restaurant",
     "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
     "createdAt": "2026-08-20T07:05:34.362Z",
-    "ownerEmail": "owner-1787209530220@goldenspoon.com"
+    "ownerEmail": "owner-1787209530220@goldenspoon.com",
+    "loginId": "",
+    "passwordHash": "",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null,
+    "keywords": ""
   },
   {
     "id": "cmt16civ5000l2hlcsofzrb2o",
@@ -61,7 +69,10 @@
     "ownerEmail": "owner-1787209426028@goldenspoon.com",
     "description": null,
     "googleReviewUrl": null,
-    "googlePlaceId": null
+    "googlePlaceId": null,
+    "loginId": "",
+    "passwordHash": "",
+    "keywords": ""
   },
   {
     "id": "cmt16bodi000i2hlc9zvlbnt1",
@@ -73,7 +84,10 @@
     "ownerEmail": "owner-1787209386450@goldenspoon.com",
     "description": null,
     "googleReviewUrl": null,
-    "googlePlaceId": null
+    "googlePlaceId": null,
+    "loginId": "",
+    "passwordHash": "",
+    "keywords": ""
   },
   {
     "id": "cmt16ak03000f2hlck9vy4r6i",
@@ -82,7 +96,13 @@
     "category": "Restaurant",
     "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
     "createdAt": "2026-08-20T07:02:14.222Z",
-    "ownerEmail": "owner-1787209332170@goldenspoon.com"
+    "ownerEmail": "owner-1787209332170@goldenspoon.com",
+    "loginId": "",
+    "passwordHash": "",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null,
+    "keywords": ""
   },
   {
     "id": "cmt167wnk000e2hlc0g7gugat",
@@ -91,7 +111,13 @@
     "category": "Restaurant",
     "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
     "createdAt": "2026-08-20T07:00:10.652Z",
-    "ownerEmail": "owner-1787209210439@goldenspoon.com"
+    "ownerEmail": "owner-1787209210439@goldenspoon.com",
+    "loginId": "",
+    "passwordHash": "",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null,
+    "keywords": ""
   },
   {
     "id": "cmt166i8g000d2hlcu8z1rkr7",
@@ -100,7 +126,13 @@
     "category": "Restaurant",
     "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
     "createdAt": "2026-08-20T06:59:05.290Z",
-    "ownerEmail": "owner-1787209145269@goldenspoon.com"
+    "ownerEmail": "owner-1787209145269@goldenspoon.com",
+    "loginId": "",
+    "passwordHash": "",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null,
+    "keywords": ""
   },
   {
     "id": "cmt1622zb000c2hlcq4fxnelc",
@@ -109,7 +141,13 @@
     "category": "Restaurant",
     "positiveTags": "[\"Great Service\",\"Friendly Staff\",\"High Quality\"]",
     "createdAt": "2026-08-20T06:55:38.918Z",
-    "ownerEmail": "owner@goldenspoon.com"
+    "ownerEmail": "owner@goldenspoon.com",
+    "loginId": "",
+    "passwordHash": "",
+    "description": null,
+    "googleReviewUrl": null,
+    "googlePlaceId": null,
+    "keywords": ""
   },
   {
     "id": "cmt115tr8000013kociy6kfk2",
