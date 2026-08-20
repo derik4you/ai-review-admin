@@ -1,8 +1,7 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Building2, Plus, Store, UserCheck, Star, MessageSquare, ExternalLink, RefreshCw, X } from 'lucide-react';
-import Link from 'next/link';
+import { Building2, Plus, Store, UserCheck, Star, MessageSquare, RefreshCw, X, Search } from 'lucide-react';
 
 interface BusinessSummary {
   id: string;
@@ -12,33 +11,57 @@ interface BusinessSummary {
   googlePlaceId?: string | null;
   googleReviewUrl?: string | null;
   createdAt: string;
-  ownerEmail: string;
+  ownerEmail?: string | null;
+  loginId?: string;
   assignedStandsCount: number;
-  totalGoogleBoosts: number;
-  totalPrivateFeedbacks: number;
-  unresolvedFeedbacksCount: number;
+  totalGoogleBoosts?: number;
+  totalPrivateFeedbacks?: number;
+}
+
+function TableRowSkeleton() {
+  return (
+    <tr className="animate-pulse">
+      <td className="py-4 px-4">
+        <div className="flex items-center space-x-2.5">
+          <div className="w-8 h-8 rounded-xl bg-[#f1f3f4]" />
+          <div className="space-y-1.5">
+            <div className="h-3.5 w-32 bg-[#f1f3f4] rounded" />
+            <div className="h-2.5 w-20 bg-[#f1f3f4] rounded" />
+          </div>
+        </div>
+      </td>
+      <td className="py-4 px-4"><div className="h-3 w-24 bg-[#f1f3f4] rounded" /></td>
+      <td className="py-4 px-4"><div className="h-6 w-28 bg-[#f1f3f4] rounded-lg" /></td>
+      <td className="py-4 px-4"><div className="h-5 w-20 bg-[#f1f3f4] rounded-full" /></td>
+      <td className="py-4 px-4"><div className="h-5 w-14 bg-[#f1f3f4] rounded-full" /></td>
+      <td className="py-4 px-4"><div className="h-5 w-14 bg-[#f1f3f4] rounded-full" /></td>
+    </tr>
+  );
 }
 
 export default function AdminBusinessesPage() {
   const [businesses, setBusinesses] = useState<BusinessSummary[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Form state
   const [name, setName] = useState<string>('');
-  const [slug, setSlug] = useState<string>('');
+  const [loginId, setLoginId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [category, setCategory] = useState<string>('Restaurant');
-  const [googlePlaceId, setGooglePlaceId] = useState<string>('');
   const [googleReviewUrl, setGoogleReviewUrl] = useState<string>('');
-  const [ownerEmail, setOwnerEmail] = useState<string>('');
-  const [ownerPassword, setOwnerPassword] = useState<string>('Password123!');
+  const [keywords, setKeywords] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>('');
 
   const fetchBusinesses = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/admin/businesses');
+      const res = await fetch('/api/admin/businesses', {
+        cache: 'no-store',
+        headers: { Pragma: 'no-cache', 'Cache-Control': 'no-cache' },
+      });
       const data = await res.json();
       if (Array.isArray(data)) setBusinesses(data);
     } catch (e) {
@@ -63,12 +86,11 @@ export default function AdminBusinessesPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
-          slug: slug || undefined,
+          loginId,
+          password,
           category,
-          googlePlaceId: googlePlaceId || undefined,
-          googleReviewUrl: googleReviewUrl || undefined,
-          ownerEmail: ownerEmail || undefined,
-          ownerPassword: ownerPassword || undefined,
+          googleReviewUrl,
+          keywords,
         }),
       });
 
@@ -76,11 +98,11 @@ export default function AdminBusinessesPage() {
       if (res.ok && data.success) {
         setIsModalOpen(false);
         setName('');
-        setSlug('');
+        setLoginId('');
+        setPassword('');
         setCategory('Restaurant');
-        setGooglePlaceId('');
         setGoogleReviewUrl('');
-        setOwnerEmail('');
+        setKeywords('');
         await fetchBusinesses();
       } else {
         setErrorMsg(data.error || 'Failed to create business profile.');
@@ -92,17 +114,24 @@ export default function AdminBusinessesPage() {
     }
   };
 
+  const filtered = businesses.filter(
+    (b) =>
+      b.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      b.slug.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (b.loginId && b.loginId.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
   return (
     <div className="space-y-6">
       {/* Header Controls */}
-      <div className="google-app-card p-6 border border-[#dadce0] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="google-app-card p-6 border border-[#dadce0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
         <div>
           <h2 className="text-xl font-extrabold text-[#202124] flex items-center space-x-2">
             <Building2 className="w-6 h-6 text-[#1a73e8]" />
-            <span>Store Profiles & Owner Credentials</span>
+            <span>Store Profiles &amp; Management</span>
           </h2>
           <p className="text-xs text-[#5f6368] mt-1">
-            Manage onboarded stores, Google Place IDs, auto-generated slugs, and stand counts.
+            Manage registered stores, custom URL slugs, and active assigned QR stands.
           </p>
         </div>
 
@@ -117,7 +146,8 @@ export default function AdminBusinessesPage() {
 
           <button
             onClick={fetchBusinesses}
-            className="p-2.5 rounded-full bg-[#f1f3f4] hover:bg-[#e8eaed] text-[#202124] border border-[#dadce0]"
+            disabled={isLoading}
+            className="p-2.5 rounded-full bg-[#f1f3f4] hover:bg-[#e8eaed] text-[#202124] border border-[#dadce0] transition-colors"
             title="Refresh List"
           >
             <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
@@ -125,39 +155,51 @@ export default function AdminBusinessesPage() {
         </div>
       </div>
 
+      {/* Search Filter */}
+      {businesses.length > 0 && (
+        <div className="relative w-full sm:w-80">
+          <Search className="w-4 h-4 text-[#5f6368] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <input
+            type="text"
+            placeholder="Search by store name, slug, or login ID..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full google-search-bar pl-9 pr-3 py-2 text-xs"
+          />
+        </div>
+      )}
+
       {/* Business Table */}
-      <div className="google-app-card border border-[#dadce0] overflow-hidden shadow-xs">
-        {isLoading ? (
-          <div className="p-12 text-center space-y-2">
-            <RefreshCw className="w-8 h-8 text-[#1a73e8] animate-spin mx-auto" />
-            <p className="text-xs text-[#5f6368]">Loading onboarded businesses...</p>
-          </div>
-        ) : businesses.length === 0 ? (
-          <div className="p-12 text-center space-y-3">
-            <Store className="w-12 h-12 text-[#5f6368] mx-auto" />
-            <p className="text-xs text-[#5f6368]">No businesses onboarded yet.</p>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="py-2 px-4 rounded-full btn-google-primary text-xs font-bold"
-            >
-              Onboard First Store
-            </button>
-          </div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-[#f8f9fa] text-[#5f6368] uppercase tracking-wider text-[10px] font-bold border-b border-[#dadce0]">
+      <div className="google-app-card border border-[#dadce0] overflow-hidden shadow-xs bg-white rounded-2xl">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-[#f8f9fa] text-[#5f6368] uppercase tracking-wider text-[10px] font-bold border-b border-[#dadce0]">
+              <tr>
+                <th className="py-3.5 px-4">Business Details</th>
+                <th className="py-3.5 px-4">URL Slug</th>
+                <th className="py-3.5 px-4">Store Login ID</th>
+                <th className="py-3.5 px-4">Assigned Stands</th>
+                <th className="py-3.5 px-4">Created Date</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#dadce0]">
+              {isLoading ? (
+                <>
+                  <TableRowSkeleton />
+                  <TableRowSkeleton />
+                  <TableRowSkeleton />
+                  <TableRowSkeleton />
+                </>
+              ) : filtered.length === 0 ? (
                 <tr>
-                  <th className="py-3.5 px-4">Business Details</th>
-                  <th className="py-3.5 px-4">URL Slug</th>
-                  <th className="py-3.5 px-4">Owner Email</th>
-                  <th className="py-3.5 px-4">Stands</th>
-                  <th className="py-3.5 px-4">5★ Google Boosts</th>
-                  <th className="py-3.5 px-4">Private Complaints</th>
+                  <td colSpan={5} className="p-12 text-center text-[#5f6368]">
+                    <Store className="w-10 h-10 text-[#9aa0a6] mx-auto mb-2" />
+                    <p className="font-bold text-sm text-[#202124]">No stores found</p>
+                    <p className="text-xs">Click &quot;Add New Business&quot; to onboard your first store.</p>
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-[#dadce0]">
-                {businesses.map((b) => (
+              ) : (
+                filtered.map((b) => (
                   <tr key={b.id} className="hover:bg-[#f8f9fa] transition-colors">
                     <td className="py-4 px-4 font-bold text-[#202124]">
                       <div className="flex items-center space-x-2.5">
@@ -176,170 +218,141 @@ export default function AdminBusinessesPage() {
                     </td>
 
                     <td className="py-4 px-4">
-                      <span className="inline-flex items-center space-x-1 px-2 py-1 rounded-lg bg-[#f1f3f4] border border-[#dadce0] text-[#202124] text-[11px] font-mono">
+                      <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-[#f1f3f4] border border-[#dadce0] text-[#202124] text-[11px] font-mono font-bold">
                         <UserCheck className="w-3 h-3 text-[#137333]" />
-                        <span>{b.ownerEmail}</span>
+                        <span>{b.loginId || 'Self-Registered'}</span>
                       </span>
                     </td>
 
                     <td className="py-4 px-4 font-mono text-[#202124]">
-                      <span className="px-2 py-0.5 rounded-full bg-[#f3e8ff] border border-[#e9d5ff] text-[#9b51e0] font-bold">
+                      <span className="px-2.5 py-1 rounded-full bg-[#f3e8ff] border border-[#e9d5ff] text-[#9b51e0] font-bold text-[11px]">
                         {b.assignedStandsCount} Stands
                       </span>
                     </td>
 
-                    <td className="py-4 px-4">
-                      <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full bg-[#e6f4ea] border border-[#ceead6] text-[#137333] font-bold">
-                        <Star className="w-3 h-3 fill-[#137333]" />
-                        <span>{b.totalGoogleBoosts}</span>
-                      </span>
-                    </td>
-
-                    <td className="py-4 px-4">
-                      <span className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full bg-[#fef7e0] border border-[#feefc3] text-[#b06000] font-bold">
-                        <MessageSquare className="w-3 h-3" />
-                        <span>{b.totalPrivateFeedbacks}</span>
-                      </span>
+                    <td className="py-4 px-4 text-[#5f6368] text-[11px]">
+                      {new Date(b.createdAt).toLocaleDateString()}
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      {/* Add New Business Modal */}
+      {/* CREATE BUSINESS MODAL */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 overflow-y-auto">
-          <div className="w-full max-w-lg p-6 rounded-2xl bg-white border border-[#dadce0] space-y-4 shadow-xl my-8">
-            <div className="flex items-center justify-between border-b border-[#dadce0] pb-3">
-              <h3 className="text-base font-bold text-[#202124] flex items-center space-x-2">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in">
+          <div className="w-full max-w-lg p-6 rounded-2xl bg-white border border-[#dadce0] space-y-5 shadow-xl relative">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 p-1.5 rounded-full bg-[#f1f3f4] text-[#5f6368] hover:bg-[#e8eaed]"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div>
+              <h3 className="text-lg font-black text-[#202124] flex items-center space-x-2">
                 <Store className="w-5 h-5 text-[#1a73e8]" />
-                <span>Onboard New Business & Owner</span>
+                <span>Onboard New Store</span>
               </h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-[#5f6368] hover:bg-[#f1f3f4] p-1.5 rounded-full"
-              >
-                <X className="w-4 h-4" />
-              </button>
+              <p className="text-xs text-[#5f6368] mt-0.5">
+                Create a business profile and optional store owner login ID.
+              </p>
             </div>
 
             {errorMsg && (
-              <div className="p-3 bg-[#fce8e6] border border-[#fad2cf] text-[#c5221f] text-xs rounded-xl font-semibold">
+              <div className="p-3 rounded-xl bg-[#fce8e6] border border-[#fad2cf] text-xs text-[#c5221f] font-bold">
                 {errorMsg}
               </div>
             )}
 
             <form onSubmit={handleCreateBusiness} className="space-y-4">
+              <div>
+                <label className="text-xs font-bold text-[#202124] block mb-1">Store Name *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Royal Cafe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-3 py-2 text-xs border border-[#dadce0] rounded-xl focus:outline-none focus:border-[#1a73e8]"
+                />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-[#202124] mb-1 block">
-                    Business Name <span className="text-[#ea4335]">*</span>
-                  </label>
+                  <label className="text-xs font-bold text-[#202124] block mb-1">Store Login ID</label>
                   <input
                     type="text"
-                    required
-                    placeholder="e.g. Bella Pizza"
-                    value={name}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                      if (!slug) setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-'));
-                    }}
-                    className="w-full google-input-field px-3 py-2 text-xs"
+                    placeholder="e.g. royal_cafe"
+                    value={loginId}
+                    onChange={(e) => setLoginId(e.target.value)}
+                    className="w-full px-3 py-2 text-xs border border-[#dadce0] rounded-xl font-mono focus:outline-none focus:border-[#1a73e8]"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-[#202124] mb-1 block">Category</label>
+                  <label className="text-xs font-bold text-[#202124] block mb-1">Password</label>
                   <input
-                    type="text"
-                    placeholder="e.g. Restaurant, Gym, Cafe"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="w-full google-input-field px-3 py-2 text-xs"
+                    type="password"
+                    placeholder="Min 6 characters"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full px-3 py-2 text-xs border border-[#dadce0] rounded-xl font-mono focus:outline-none focus:border-[#1a73e8]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#202124] mb-1 block">URL Slug (/biz/[slug])</label>
+                <label className="text-xs font-bold text-[#202124] block mb-1">Category</label>
                 <input
                   type="text"
-                  placeholder="e.g. bella-pizza"
-                  value={slug}
-                  onChange={(e) => setSlug(e.target.value)}
-                  className="w-full google-input-field px-3 py-2 text-xs font-mono text-[#1a73e8]"
+                  placeholder="e.g. Cafe, Restaurant, Salon"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full px-3 py-2 text-xs border border-[#dadce0] rounded-xl focus:outline-none focus:border-[#1a73e8]"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#202124] mb-1 block">Google Place ID (Optional)</label>
-                <input
-                  type="text"
-                  placeholder="ChIJ..."
-                  value={googlePlaceId}
-                  onChange={(e) => setGooglePlaceId(e.target.value)}
-                  className="w-full google-input-field px-3 py-2 text-xs font-mono"
-                />
-              </div>
-
-              <div>
-                <label className="text-xs font-semibold text-[#202124] mb-1 block">Google Direct Review Link (Optional)</label>
+                <label className="text-xs font-bold text-[#202124] block mb-1">Target Google Maps Review URL</label>
                 <input
                   type="url"
-                  placeholder="https://search.google.com/local/writereview?placeid=..."
+                  placeholder="https://search.google.com/local/writereview?..."
                   value={googleReviewUrl}
                   onChange={(e) => setGoogleReviewUrl(e.target.value)}
-                  className="w-full google-input-field px-3 py-2 text-xs font-mono"
+                  className="w-full px-3 py-2 text-xs border border-[#dadce0] rounded-xl focus:outline-none focus:border-[#1a73e8]"
                 />
               </div>
 
-              <div className="p-4 rounded-xl bg-[#f8f9fa] border border-[#dadce0] space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#137333] flex items-center space-x-1.5">
-                  <UserCheck className="w-4 h-4" />
-                  <span>Provision Owner Credentials</span>
-                </h4>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="text-[11px] text-[#5f6368] block mb-1">Owner Email Address</label>
-                    <input
-                      type="email"
-                      placeholder="owner@bellapizza.com"
-                      value={ownerEmail}
-                      onChange={(e) => setOwnerEmail(e.target.value)}
-                      className="w-full google-input-field px-3 py-2 text-xs"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-[11px] text-[#5f6368] block mb-1">Default Password</label>
-                    <input
-                      type="text"
-                      value={ownerPassword}
-                      onChange={(e) => setOwnerPassword(e.target.value)}
-                      className="w-full google-input-field px-3 py-2 text-xs font-mono"
-                    />
-                  </div>
-                </div>
+              <div>
+                <label className="text-xs font-bold text-[#202124] block mb-1">Keywords (for AI reviews)</label>
+                <input
+                  type="text"
+                  placeholder="e.g. fast service, great coffee, cozy vibe"
+                  value={keywords}
+                  onChange={(e) => setKeywords(e.target.value)}
+                  className="w-full px-3 py-2 text-xs border border-[#dadce0] rounded-xl focus:outline-none focus:border-[#1a73e8]"
+                />
               </div>
 
-              <div className="pt-2 flex items-center justify-end space-x-2">
+              <div className="pt-2 flex justify-end space-x-2">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="py-2 px-4 rounded-full border border-[#dadce0] text-[#5f6368] hover:bg-[#f1f3f4] text-xs font-semibold"
+                  className="py-2 px-4 rounded-full border border-[#dadce0] text-xs font-bold text-[#5f6368] hover:bg-[#f1f3f4]"
                 >
                   Cancel
                 </button>
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="py-2 px-5 rounded-full btn-google-primary text-xs font-bold shadow-xs"
+                  className="py-2 px-5 rounded-full btn-google-primary text-xs font-bold disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Onboarding...' : 'Onboard Store'}
+                  {isSubmitting ? 'Creating...' : 'Create Store'}
                 </button>
               </div>
             </form>

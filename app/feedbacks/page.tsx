@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
-import { MessageSquare, Star, CheckCircle2, Clock, RefreshCw, User, Phone } from 'lucide-react';
+import { MessageSquare, Star, CheckCircle2, Clock, RefreshCw, User, Phone, Search } from 'lucide-react';
 
 interface FeedbackItem {
   id: string;
@@ -24,6 +24,33 @@ interface BusinessOption {
   name: string;
 }
 
+function FeedbackCardSkeleton() {
+  return (
+    <div className="google-app-card p-5 border border-[#dadce0] rounded-2xl space-y-4 animate-pulse bg-white shadow-xs">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 rounded-full bg-[#f1f3f4]" />
+          <div className="space-y-1">
+            <div className="h-3.5 w-24 bg-[#f1f3f4] rounded" />
+            <div className="h-2.5 w-16 bg-[#f1f3f4] rounded" />
+          </div>
+        </div>
+        <div className="h-5 w-20 bg-[#f1f3f4] rounded-full" />
+      </div>
+
+      <div className="space-y-2">
+        <div className="h-3 w-full bg-[#f1f3f4] rounded" />
+        <div className="h-3 w-3/4 bg-[#f1f3f4] rounded" />
+      </div>
+
+      <div className="pt-3 border-t border-[#dadce0] flex items-center justify-between">
+        <div className="h-3 w-28 bg-[#f1f3f4] rounded" />
+        <div className="h-7 w-24 bg-[#f1f3f4] rounded-full" />
+      </div>
+    </div>
+  );
+}
+
 export default function AdminFeedbacksPage() {
   const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]);
   const [businesses, setBusinesses] = useState<BusinessOption[]>([]);
@@ -36,12 +63,18 @@ export default function AdminFeedbacksPage() {
     setIsLoading(true);
     try {
       const url = `/api/admin/feedbacks?businessId=${selectedBusinessId}&status=${selectedStatus}`;
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        cache: 'no-store',
+        headers: { Pragma: 'no-cache', 'Cache-Control': 'no-cache' },
+      });
       const data = await res.json();
       if (Array.isArray(data)) setFeedbacks(data);
 
       if (businesses.length === 0) {
-        const bRes = await fetch('/api/admin/businesses');
+        const bRes = await fetch('/api/admin/businesses', {
+          cache: 'no-store',
+          headers: { Pragma: 'no-cache', 'Cache-Control': 'no-cache' },
+        });
         const bData = await bRes.json();
         if (Array.isArray(bData)) {
           setBusinesses(bData.map((b: any) => ({ id: b.id, name: b.name })));
@@ -73,10 +106,12 @@ export default function AdminFeedbacksPage() {
       });
 
       if (res.ok) {
-        await fetchGlobalFeedbacks();
+        setFeedbacks((prev) =>
+          prev.map((f) => (f.id === item.id ? { ...f, status: nextStatus } : f))
+        );
       }
-    } catch (e) {
-      console.error('Failed to toggle status:', e);
+    } catch (err) {
+      console.error('Failed to toggle feedback status:', err);
     } finally {
       setUpdatingId(null);
     }
@@ -86,95 +121,95 @@ export default function AdminFeedbacksPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header & Controls */}
-      <div className="google-app-card p-6 border border-[#dadce0] space-y-4 shadow-xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#dadce0] pb-4">
-          <div>
-            <h2 className="text-xl font-extrabold text-[#202124] flex items-center space-x-2">
-              <MessageSquare className="w-6 h-6 text-[#ea4335]" />
-              <span>Global Complaints Feed</span>
-            </h2>
-            <p className="text-xs text-[#5f6368] mt-1">
-              Live network stream of all 1–3 star private customer complaints across ALL onboarded stores.
-            </p>
-          </div>
+      {/* Header */}
+      <div className="google-app-card p-6 border border-[#dadce0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div>
+          <h2 className="text-xl font-extrabold text-[#202124] flex items-center space-x-2">
+            <MessageSquare className="w-6 h-6 text-[#ea4335]" />
+            <span>Private Customer Complaints Inbox</span>
+          </h2>
+          <p className="text-xs text-[#5f6368] mt-1">
+            Intercepted 1-3 star reviews stored privately. Currently{' '}
+            <strong className="text-[#ea4335]">{unresolvedCount} unresolved issues</strong>.
+          </p>
+        </div>
 
+        <div className="flex items-center space-x-2.5">
           <button
             onClick={fetchGlobalFeedbacks}
-            className="p-2.5 rounded-full bg-[#f1f3f4] hover:bg-[#e8eaed] text-[#202124] border border-[#dadce0]"
-            title="Refresh Feed"
+            disabled={isLoading}
+            className="p-2.5 rounded-full bg-[#f1f3f4] hover:bg-[#e8eaed] text-[#202124] border border-[#dadce0] transition-colors"
+            title="Refresh Complaints"
           >
             <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
           </button>
         </div>
+      </div>
 
-        {/* Filter Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <span className="text-xs text-[#5f6368] font-semibold whitespace-nowrap">Filter Store:</span>
-            <select
-              value={selectedBusinessId}
-              onChange={(e) => setSelectedBusinessId(e.target.value)}
-              className="bg-[#f8f9fa] border border-[#dadce0] text-xs text-[#1a73e8] font-semibold rounded-xl px-3 py-1.5 focus:outline-none focus:border-[#1a73e8]"
-            >
-              <option value="ALL">🏢 All Stores Network-wide</option>
-              {businesses.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.name}
-                </option>
-              ))}
-            </select>
-          </div>
+      {/* Filters */}
+      <div className="flex flex-wrap items-center gap-3">
+        <select
+          value={selectedBusinessId}
+          onChange={(e) => setSelectedBusinessId(e.target.value)}
+          className="bg-white border border-[#dadce0] rounded-xl px-3 py-2 text-xs font-bold text-[#202124] focus:outline-none focus:border-[#1a73e8]"
+        >
+          <option value="ALL">All Stores ({businesses.length})</option>
+          {businesses.map((b) => (
+            <option key={b.id} value={b.id}>
+              {b.name}
+            </option>
+          ))}
+        </select>
 
-          <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <button
-              onClick={() => setSelectedStatus('ALL')}
-              className={`py-1.5 px-3 rounded-full text-xs font-semibold border ${
-                selectedStatus === 'ALL'
-                  ? 'bg-[#fce8e6] border-[#fad2cf] text-[#ea4335]'
-                  : 'bg-[#f8f9fa] border-[#dadce0] text-[#5f6368]'
-              }`}
-            >
-              All Complaints ({feedbacks.length})
-            </button>
-            <button
-              onClick={() => setSelectedStatus('UNRESOLVED')}
-              className={`py-1.5 px-3 rounded-full text-xs font-semibold border ${
-                selectedStatus === 'UNRESOLVED'
-                  ? 'bg-[#fce8e6] border-[#fad2cf] text-[#c5221f]'
-                  : 'bg-[#f8f9fa] border-[#dadce0] text-[#5f6368]'
-              }`}
-            >
-              Unresolved ({unresolvedCount})
-            </button>
-            <button
-              onClick={() => setSelectedStatus('RESOLVED')}
-              className={`py-1.5 px-3 rounded-full text-xs font-semibold border ${
-                selectedStatus === 'RESOLVED'
-                  ? 'bg-[#e6f4ea] border-[#ceead6] text-[#137333]'
-                  : 'bg-[#f8f9fa] border-[#dadce0] text-[#5f6368]'
-              }`}
-            >
-              Resolved
-            </button>
-          </div>
+        <div className="flex items-center space-x-1.5">
+          <button
+            onClick={() => setSelectedStatus('ALL')}
+            className={`py-1.5 px-3 rounded-full text-xs font-bold border transition-colors ${
+              selectedStatus === 'ALL'
+                ? 'bg-[#1a73e8] text-white border-[#1a73e8]'
+                : 'bg-white text-[#5f6368] border-[#dadce0] hover:bg-[#f1f3f4]'
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setSelectedStatus('UNRESOLVED')}
+            className={`py-1.5 px-3 rounded-full text-xs font-bold border transition-colors ${
+              selectedStatus === 'UNRESOLVED'
+                ? 'bg-[#fce8e6] text-[#c5221f] border-[#fad2cf]'
+                : 'bg-white text-[#5f6368] border-[#dadce0] hover:bg-[#f1f3f4]'
+            }`}
+          >
+            Unresolved
+          </button>
+          <button
+            onClick={() => setSelectedStatus('RESOLVED')}
+            className={`py-1.5 px-3 rounded-full text-xs font-bold border transition-colors ${
+              selectedStatus === 'RESOLVED'
+                ? 'bg-[#e6f4ea] text-[#137333] border-[#ceead6]'
+                : 'bg-white text-[#5f6368] border-[#dadce0] hover:bg-[#f1f3f4]'
+            }`}
+          >
+            Resolved
+          </button>
         </div>
       </div>
 
-      {/* Feed List */}
+      {/* Feedback Feed */}
       {isLoading ? (
-        <div className="p-12 text-center space-y-2">
-          <RefreshCw className="w-8 h-8 text-[#ea4335] animate-spin mx-auto" />
-          <p className="text-xs text-[#5f6368]">Loading global feedback stream...</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <FeedbackCardSkeleton />
+          <FeedbackCardSkeleton />
+          <FeedbackCardSkeleton />
         </div>
       ) : feedbacks.length === 0 ? (
-        <div className="google-app-card p-12 border border-[#dadce0] text-center space-y-2">
-          <CheckCircle2 className="w-12 h-12 text-[#137333] mx-auto" />
-          <h3 className="text-base font-bold text-[#202124]">No Complaints Found</h3>
-          <p className="text-xs text-[#5f6368]">All customer feedback in this filter has been resolved or none exists.</p>
+        <div className="p-12 text-center bg-white border border-[#dadce0] rounded-2xl space-y-2 shadow-xs">
+          <CheckCircle2 className="w-10 h-10 text-[#137333] mx-auto" />
+          <h3 className="text-sm font-bold text-[#202124]">No private complaints found</h3>
+          <p className="text-xs text-[#5f6368]">All stores have clean feedback records for this filter.</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {feedbacks.map((f) => {
             const isResolved = f.status === 'RESOLVED';
             const isUpdating = updatingId === f.id;
@@ -182,67 +217,72 @@ export default function AdminFeedbacksPage() {
             return (
               <div
                 key={f.id}
-                className={`google-app-card p-6 border transition-all space-y-4 ${
-                  isResolved ? 'opacity-60 bg-[#f8f9fa]' : 'bg-white'
-                }`}
+                className="google-app-card p-5 border border-[#dadce0] rounded-2xl flex flex-col justify-between space-y-4 bg-white shadow-xs hover:shadow-md transition-shadow relative"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#dadce0] pb-3">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-[#fef7e0] border border-[#feefc3] text-[#b06000] font-bold text-xs">
-                      <span>{f.rating}</span>
-                      <Star className="w-3.5 h-3.5 fill-[#b06000]" />
-                    </div>
-
-                    <div>
-                      <h4 className="text-sm font-bold text-[#202124] flex items-center space-x-2">
-                        <span>{f.business?.name || 'Store'}</span>
-                        <span className="text-[10px] text-[#5f6368] font-mono">/biz/{f.business?.slug}</span>
-                      </h4>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3">
-                    <span className="text-[11px] text-[#5f6368] flex items-center space-x-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{new Date(f.createdAt).toLocaleString()}</span>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-[#1a73e8] bg-[#e8f0fe] px-2.5 py-0.5 rounded-full border border-[#d2e3fc]">
+                      {f.business?.name || 'Store'}
                     </span>
 
-                    <button
-                      onClick={() => toggleStatus(f)}
-                      disabled={isUpdating}
-                      className={`py-1.5 px-3 rounded-full border text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                    <span
+                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border flex items-center space-x-1 ${
                         isResolved
-                          ? 'bg-[#f1f3f4] border-[#dadce0] text-[#5f6368]'
-                          : 'bg-[#e6f4ea] border-[#ceead6] text-[#137333] hover:bg-[#ceead6]'
+                          ? 'bg-[#e6f4ea] text-[#137333] border-[#ceead6]'
+                          : 'bg-[#fce8e6] text-[#c5221f] border-[#fad2cf]'
                       }`}
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>{isResolved ? 'Resolved' : 'Mark Resolved'}</span>
-                    </button>
+                      {isResolved ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3" />}
+                      <span>{isResolved ? 'Resolved' : 'Pending Action'}</span>
+                    </span>
+                  </div>
+
+                  <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 ${
+                          i < f.rating ? 'text-[#ea4335] fill-[#ea4335]' : 'text-[#dadce0]'
+                        }`}
+                      />
+                    ))}
+                    <span className="text-xs font-bold text-[#ea4335] ml-1.5">{f.rating} / 5 Stars</span>
+                  </div>
+
+                  <p className="text-xs text-[#202124] leading-relaxed bg-[#f8f9fa] p-3 rounded-xl border border-[#dadce0] italic">
+                    &quot;{f.message}&quot;
+                  </p>
+
+                  <div className="space-y-1 text-[11px] text-[#5f6368] pt-1">
+                    <div className="flex items-center space-x-1.5">
+                      <User className="w-3.5 h-3.5 text-[#5f6368]" />
+                      <span className="font-semibold">{f.customerName || 'Anonymous Customer'}</span>
+                    </div>
+                    {f.customerContact && (
+                      <div className="flex items-center space-x-1.5">
+                        <Phone className="w-3.5 h-3.5 text-[#5f6368]" />
+                        <span className="font-mono">{f.customerContact}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#f8f9fa] border border-[#dadce0] space-y-2">
-                  <p className="text-xs text-[#202124] leading-relaxed italic">
-                    "{f.message}"
-                  </p>
+                <div className="pt-3 border-t border-[#dadce0] flex items-center justify-between text-[11px]">
+                  <span className="text-[#9aa0a6]">
+                    {new Date(f.createdAt).toLocaleDateString()}
+                  </span>
 
-                  {(f.customerName || f.customerContact) && (
-                    <div className="pt-2 border-t border-[#dadce0] flex flex-wrap items-center gap-3 text-[11px] text-[#5f6368]">
-                      {f.customerName && (
-                        <span className="flex items-center space-x-1">
-                          <User className="w-3 h-3 text-[#1a73e8]" />
-                          <span>{f.customerName}</span>
-                        </span>
-                      )}
-                      {f.customerContact && (
-                        <span className="flex items-center space-x-1 font-mono text-[#202124]">
-                          <Phone className="w-3 h-3 text-[#137333]" />
-                          <span>{f.customerContact}</span>
-                        </span>
-                      )}
-                    </div>
-                  )}
+                  <button
+                    onClick={() => toggleStatus(f)}
+                    disabled={isUpdating}
+                    className={`px-3 py-1 rounded-full font-bold transition-colors text-xs ${
+                      isResolved
+                        ? 'bg-[#f1f3f4] text-[#5f6368] hover:bg-[#e8eaed]'
+                        : 'bg-[#137333] text-white hover:bg-[#0d5926]'
+                    }`}
+                  >
+                    {isUpdating ? 'Updating...' : isResolved ? 'Reopen' : 'Mark Resolved'}
+                  </button>
                 </div>
               </div>
             );
