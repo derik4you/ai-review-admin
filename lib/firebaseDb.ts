@@ -1,4 +1,4 @@
-import { db } from './firebase';
+﻿import { db } from './firebase';
 import {
   collection, getDocs, doc, setDoc, query, where, getDoc
 } from 'firebase/firestore';
@@ -18,9 +18,9 @@ export interface FeedbackRecord {
   createdAt: string;
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // NEW: Get a single business by its loginId
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function getBusinessByLoginId(loginId: string): Promise<BusinessRecord | null> {
   const clean = loginId.trim().toLowerCase();
   try {
@@ -54,9 +54,9 @@ export async function getBusinessByLoginId(loginId: string): Promise<BusinessRec
   return (jsonBusinesses.find((b) => (b as any).loginId === clean) as BusinessRecord) || null;
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // NEW: Check whether a loginId is already taken
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function checkLoginIdExists(loginId: string): Promise<boolean> {
   const clean = loginId.trim().toLowerCase();
   try {
@@ -72,12 +72,14 @@ export async function checkLoginIdExists(loginId: string): Promise<boolean> {
   return jsonBusinesses.some((b) => (b as any).loginId === clean);
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Get a single business document by its Firestore doc ID
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function getBusinessById(id: string): Promise<BusinessRecord | null> {
+  const cleanId = String(id).trim();
   try {
-    const docRef = doc(db, 'businesses', id);
+    // 1. Direct doc ID lookup
+    const docRef = doc(db, 'businesses', cleanId);
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       const data = snapshot.data();
@@ -105,9 +107,9 @@ export async function getBusinessById(id: string): Promise<BusinessRecord | null
   return (jsonBusinesses.find((b) => b.id === id) as BusinessRecord) || null;
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Get a single business by slug
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function getBusinessBySlug(slug: string): Promise<BusinessRecord | null> {
   try {
     const colRef = collection(db, 'businesses');
@@ -139,9 +141,9 @@ export async function getBusinessBySlug(slug: string): Promise<BusinessRecord | 
   return (jsonBusinesses.find((b) => b.slug === slug) as BusinessRecord) || null;
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Get ALL businesses
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function getBusinessesFromFirebase(): Promise<BusinessRecord[]> {
   try {
     const colRef = collection(db, 'businesses');
@@ -177,9 +179,9 @@ export async function getBusinessesFromFirebase(): Promise<BusinessRecord[]> {
   return getJsonBusinesses();
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Save / update a business document
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function saveBusinessToFirebase(record: BusinessRecord): Promise<void> {
   saveJsonBusiness(record);
 
@@ -192,9 +194,9 @@ export async function saveBusinessToFirebase(record: BusinessRecord): Promise<vo
   }
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // QR Stands helpers
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function getStandsFromFirebase(): Promise<QrStandRecord[]> {
   const baseStands = getJsonStands();
   try {
@@ -277,9 +279,9 @@ export async function updateStandInFirebase(
   }
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Feedback helpers
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function saveFeedbackToFirebase(feedback: FeedbackRecord): Promise<void> {
   try {
     const docRef = doc(db, 'feedbacks', feedback.id);
@@ -325,3 +327,4 @@ export async function getFeedbacksFromFirebase(businessId?: string, status?: str
     return [];
   }
 }
+
