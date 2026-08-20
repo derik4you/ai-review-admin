@@ -178,20 +178,31 @@ export default function AdminStandsPage() {
 
   const assignedCount = stands.filter((s) => s.status === 'ASSIGNED' || s.businessId).length;
   const unassignedCount = stands.length - assignedCount;
-  const [customOrigin, setCustomOrigin] = useState<string>('');
+  const [customOrigin, setCustomOrigin] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('admin_target_store_origin') || process.env.NEXT_PUBLIC_STORE_URL || 'https://ai-review-ecru.vercel.app';
+    }
+    return 'https://ai-review-ecru.vercel.app';
+  });
 
   const getResolvedCustomerOrigin = () => {
-    if (customOrigin.trim()) return customOrigin.trim().replace(/\/$/, '');
-    if (typeof window === 'undefined') return 'http://localhost:3000';
+    if (customOrigin && customOrigin.trim()) {
+      return customOrigin.trim().replace(/\/$/, '');
+    }
+    if (typeof window === 'undefined') return 'https://ai-review-ecru.vercel.app';
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
       return 'http://localhost:3000';
     }
     const envUrl = process.env.NEXT_PUBLIC_STORE_URL || process.env.NEXT_PUBLIC_APP_URL;
     if (envUrl) return envUrl.replace(/\/$/, '');
-    if (window.location.hostname.includes('-admin')) {
-      return window.location.origin.replace('-admin', '');
+    return 'https://ai-review-ecru.vercel.app';
+  };
+
+  const handleOriginChange = (newVal: string) => {
+    setCustomOrigin(newVal);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('admin_target_store_origin', newVal);
     }
-    return window.location.origin;
   };
 
   const currentOrigin = getResolvedCustomerOrigin();
@@ -269,6 +280,22 @@ export default function AdminStandsPage() {
               <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
               <span>Sync Inventory</span>
             </button>
+          </div>
+        </div>
+
+        {/* Target Customer Domain Configuration */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2.5 bg-[#f8f9fa] border border-[#dadce0] rounded-xl text-xs">
+          <span className="text-[#5f6368] font-semibold flex items-center space-x-1.5">
+            <span>📍 <strong>Customer QR Target Domain:</strong></span>
+          </span>
+          <div className="flex items-center space-x-2 w-full sm:w-auto">
+            <input
+              type="text"
+              value={customOrigin}
+              onChange={(e) => handleOriginChange(e.target.value)}
+              placeholder="https://ai-review-ecru.vercel.app"
+              className="px-3 py-1 bg-white border border-[#dadce0] rounded-lg text-xs font-mono text-[#1a73e8] font-bold w-full sm:w-80 focus:outline-none focus:border-[#1a73e8]"
+            />
           </div>
         </div>
 
@@ -590,5 +617,7 @@ export default function AdminStandsPage() {
     </div>
   );
 }
+
+
 
 
