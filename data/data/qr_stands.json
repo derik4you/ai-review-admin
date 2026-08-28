@@ -1,0 +1,802 @@
+[
+  {
+    "standNumber": 1,
+    "status": "ASSIGNED",
+    "businessId": "cmt167wnk000e2hlc0g7gugat",
+    "businessName": "My Store",
+    "businessSlug": "my-store-262",
+    "updatedAt": "2026-08-20T10:16:51.622Z"
+  },
+  {
+    "standNumber": 2,
+    "status": "ASSIGNED",
+    "businessId": "biz-1",
+    "businessName": "Bangalore House",
+    "businessSlug": "banglore-house-701",
+    "updatedAt": "2026-08-20T07:09:09.715Z"
+  },
+  {
+    "standNumber": 3,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:23.007Z"
+  },
+  {
+    "standNumber": 4,
+    "status": "ASSIGNED",
+    "businessId": "biz-1",
+    "businessName": "Bangalore House",
+    "businessSlug": "banglore-house-701",
+    "updatedAt": "2026-08-20T06:46:35.811Z"
+  },
+  {
+    "standNumber": 5,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:27.458Z"
+  },
+  {
+    "standNumber": 6,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:28.073Z"
+  },
+  {
+    "standNumber": 7,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:28.558Z"
+  },
+  {
+    "standNumber": 8,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:28.856Z"
+  },
+  {
+    "standNumber": 9,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:29.230Z"
+  },
+  {
+    "standNumber": 10,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:29.656Z"
+  },
+  {
+    "standNumber": 11,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:30.678Z"
+  },
+  {
+    "standNumber": 12,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:31.349Z"
+  },
+  {
+    "standNumber": 13,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:32.928Z"
+  },
+  {
+    "standNumber": 14,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:34.823Z"
+  },
+  {
+    "standNumber": 15,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:36.764Z"
+  },
+  {
+    "standNumber": 16,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:39.175Z"
+  },
+  {
+    "standNumber": 17,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:40.086Z"
+  },
+  {
+    "standNumber": 18,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:40.972Z"
+  },
+  {
+    "standNumber": 19,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:42.327Z"
+  },
+  {
+    "standNumber": 20,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:43.882Z"
+  },
+  {
+    "standNumber": 21,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:44.880Z"
+  },
+  {
+    "standNumber": 22,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:45.333Z"
+  },
+  {
+    "standNumber": 23,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:45.527Z"
+  },
+  {
+    "standNumber": 24,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:45.974Z"
+  },
+  {
+    "standNumber": 25,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:47.121Z"
+  },
+  {
+    "standNumber": 26,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:48.287Z"
+  },
+  {
+    "standNumber": 27,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:48.738Z"
+  },
+  {
+    "standNumber": 28,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:48.960Z"
+  },
+  {
+    "standNumber": 29,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:49.142Z"
+  },
+  {
+    "standNumber": 30,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:49.277Z"
+  },
+  {
+    "standNumber": 31,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:49.422Z"
+  },
+  {
+    "standNumber": 32,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:49.599Z"
+  },
+  {
+    "standNumber": 33,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:49.748Z"
+  },
+  {
+    "standNumber": 34,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:49.884Z"
+  },
+  {
+    "standNumber": 35,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.022Z"
+  },
+  {
+    "standNumber": 36,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.178Z"
+  },
+  {
+    "standNumber": 37,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.333Z"
+  },
+  {
+    "standNumber": 38,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.479Z"
+  },
+  {
+    "standNumber": 39,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.592Z"
+  },
+  {
+    "standNumber": 40,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.706Z"
+  },
+  {
+    "standNumber": 41,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.827Z"
+  },
+  {
+    "standNumber": 42,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.950Z"
+  },
+  {
+    "standNumber": 43,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.097Z"
+  },
+  {
+    "standNumber": 44,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.563Z"
+  },
+  {
+    "standNumber": 45,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:52.613Z"
+  },
+  {
+    "standNumber": 46,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:54.242Z"
+  },
+  {
+    "standNumber": 47,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:55.475Z"
+  },
+  {
+    "standNumber": 48,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.040Z"
+  },
+  {
+    "standNumber": 49,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.176Z"
+  },
+  {
+    "standNumber": 50,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.332Z"
+  },
+  {
+    "standNumber": 51,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.477Z"
+  },
+  {
+    "standNumber": 52,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.618Z"
+  },
+  {
+    "standNumber": 53,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.751Z"
+  },
+  {
+    "standNumber": 54,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.880Z"
+  },
+  {
+    "standNumber": 55,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.043Z"
+  },
+  {
+    "standNumber": 56,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.389Z"
+  },
+  {
+    "standNumber": 57,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:52.365Z"
+  },
+  {
+    "standNumber": 58,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:53.995Z"
+  },
+  {
+    "standNumber": 59,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:55.461Z"
+  },
+  {
+    "standNumber": 60,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:52.398Z"
+  },
+  {
+    "standNumber": 61,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:54.513Z"
+  },
+  {
+    "standNumber": 62,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:55.581Z"
+  },
+  {
+    "standNumber": 63,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.678Z"
+  },
+  {
+    "standNumber": 64,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.801Z"
+  },
+  {
+    "standNumber": 65,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:50.945Z"
+  },
+  {
+    "standNumber": 66,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.096Z"
+  },
+  {
+    "standNumber": 67,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.577Z"
+  },
+  {
+    "standNumber": 68,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:52.606Z"
+  },
+  {
+    "standNumber": 69,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:55.591Z"
+  },
+  {
+    "standNumber": 70,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.567Z"
+  },
+  {
+    "standNumber": 71,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:52.643Z"
+  },
+  {
+    "standNumber": 72,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:54.261Z"
+  },
+  {
+    "standNumber": 73,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:55.503Z"
+  },
+  {
+    "standNumber": 74,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 75,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 76,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 77,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 78,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 79,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 80,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 81,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 82,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 83,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 84,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 85,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 86,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 87,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 88,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 89,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 90,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 91,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 92,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 93,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 94,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 95,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 96,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 97,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 98,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 99,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  },
+  {
+    "standNumber": 100,
+    "status": "UNASSIGNED",
+    "businessId": null,
+    "businessName": null,
+    "businessSlug": null,
+    "updatedAt": "2026-08-20T10:16:51.626Z"
+  }
+]

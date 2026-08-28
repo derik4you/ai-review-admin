@@ -1,0 +1,132 @@
+{
+  "Admin Dashboard Metrics": {
+    "cold": {
+      "avg": 305,
+      "median": 33,
+      "min": 30,
+      "max": 852
+    },
+    "warm": {
+      "avg": 30,
+      "median": 31,
+      "min": 23,
+      "max": 33
+    },
+    "rawColdMs": [
+      852,
+      30,
+      33
+    ],
+    "rawWarmMs": [
+      33,
+      31,
+      33,
+      29,
+      23
+    ]
+  },
+  "Admin Businesses List (?page=1&limit=25)": {
+    "cold": {
+      "avg": 1075,
+      "median": 552,
+      "min": 535,
+      "max": 2138
+    },
+    "warm": {
+      "avg": 391,
+      "median": 393,
+      "min": 377,
+      "max": 405
+    },
+    "rawColdMs": [
+      2138,
+      552,
+      535
+    ],
+    "rawWarmMs": [
+      399,
+      405,
+      383,
+      377,
+      393
+    ]
+  },
+  "Admin Categories List": {
+    "cold": {
+      "avg": 1215,
+      "median": 297,
+      "min": 259,
+      "max": 3090
+    },
+    "warm": {
+      "avg": 376,
+      "median": 289,
+      "min": 264,
+      "max": 696
+    },
+    "rawColdMs": [
+      3090,
+      297,
+      259
+    ],
+    "rawWarmMs": [
+      264,
+      696,
+      277,
+      289,
+      352
+    ]
+  },
+  "Admin Analytics (7d)": {
+    "cold": {
+      "avg": 647,
+      "median": 66,
+      "min": 30,
+      "max": 1845
+    },
+    "warm": {
+      "avg": 27,
+      "median": 27,
+      "min": 25,
+      "max": 30
+    },
+    "rawColdMs": [
+      1845,
+      66,
+      30
+    ],
+    "rawWarmMs": [
+      25,
+      30,
+      25,
+      29,
+      27
+    ]
+  },
+  "Admin AI Control Settings": {
+    "cold": {
+      "avg": 652,
+      "median": 423,
+      "min": 314,
+      "max": 1219
+    },
+    "warm": {
+      "avg": 148,
+      "median": 143,
+      "min": 134,
+      "max": 165
+    },
+    "rawColdMs": [
+      1219,
+      314,
+      423
+    ],
+    "rawWarmMs": [
+      143,
+      160,
+      165,
+      134,
+      138
+    ]
+  }
+}

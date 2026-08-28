@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import { MessageSquare, Star, CheckCircle2, Clock, RefreshCw, User, Phone, Search } from 'lucide-react';

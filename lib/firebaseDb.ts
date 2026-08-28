@@ -1,10 +1,13 @@
-﻿import { db } from './firebase';
+import { db } from './firebase';
 import {
-  collection, getDocs, doc, setDoc, query, where, getDoc, updateDoc
+  collection, getDocs, doc, setDoc, query, where, getDoc, updateDoc, getCountFromServer, orderBy, limit
 } from 'firebase/firestore';
-import { getJsonBusinesses, saveJsonBusiness, getJsonStands, saveJsonStands, BusinessRecord, QrStandRecord } from './jsonDb';
+import {
+  getJsonBusinesses, saveJsonBusiness, getJsonStands, saveJsonStands,
+  BusinessRecord, QrStandRecord, BusinessAiProfile, ReviewHistoryRecord, CompetitorInsightRecord
+} from './jsonDb';
 
-export type { BusinessRecord, QrStandRecord };
+export type { BusinessRecord, QrStandRecord, BusinessAiProfile, ReviewHistoryRecord, CompetitorInsightRecord };
 
 export interface FeedbackRecord {
   id: string;
@@ -146,6 +149,20 @@ export async function getBusinessesFromFirebase(): Promise<BusinessRecord[]> {
   return getJsonBusinesses();
 }
 
+function sanitizeForFirestore(obj: any): any {
+  if (obj === undefined) return null;
+  if (obj === null || typeof obj !== 'object') return obj;
+  if (Array.isArray(obj)) return obj.map(sanitizeForFirestore);
+  
+  const clean: Record<string, any> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (value !== undefined) {
+      clean[key] = sanitizeForFirestore(value);
+    }
+  }
+  return clean;
+}
+
 // ─────────────────────────────────────────────
 // Save / update a business document (stores assigned stands inside doc)
 // ─────────────────────────────────────────────
@@ -155,7 +172,8 @@ export async function saveBusinessToFirebase(record: BusinessRecord): Promise<vo
   try {
     const docId = record.id || record.slug;
     const docRef = doc(db, 'businesses', docId);
-    await setDoc(docRef, record, { merge: true });
+    const cleanRecord = sanitizeForFirestore(record);
+    await setDoc(docRef, cleanRecord, { merge: true });
   } catch (err) {
     console.warn('Firebase saveBusiness warning:', err);
   }
@@ -265,6 +283,13 @@ export async function updateStandInFirebase(
 
 // Helper to format Firestore Business document
 function formatBusinessDoc(docId: string, data: any): BusinessRecord {
+  let parsedReviewTags: string[] | undefined = undefined;
+  if (Array.isArray(data.reviewTags)) {
+    parsedReviewTags = data.reviewTags;
+  } else if (typeof data.reviewTags === 'string') {
+    try { parsedReviewTags = JSON.parse(data.reviewTags); } catch {}
+  }
+
   return {
     id: data.id || docId,
     loginId: data.loginId || '',
@@ -272,16 +297,81 @@ function formatBusinessDoc(docId: string, data: any): BusinessRecord {
     name: data.name,
     slug: data.slug,
     category: data.category || 'General Store',
+    city: data.city || null,
+    area: data.area || null,
+    landmark: data.landmark || null,
+    location: data.location || null,
+    locationContext: data.locationContext || (data.city || data.area || data.landmark ? { city: data.city, area: data.area, landmark: data.landmark } : null),
     description: data.description || null,
+    services: data.services || null,
+    website: data.website || null,
+    instagram: data.instagram || null,
     googleReviewUrl: data.googleReviewUrl || null,
     googlePlaceId: data.googlePlaceId || null,
     positiveTags: data.positiveTags || JSON.stringify(['Great Service', 'Friendly Staff']),
+    reviewTags: parsedReviewTags,
     keywords: data.keywords || '',
+    aiProfile: data.aiProfile || null,
+    aiLength: data.aiLength || 'MEDIUM',
+    aiLanguage: data.aiLanguage || 'English',
+    aiTone: data.aiTone || 'Enthusiastic',
+    aiHumanize: data.aiHumanize !== false,
+    aiCustomPrompt: data.aiCustomPrompt || null,
     assignedStandNumber: data.assignedStandNumber || null,
     assignedStandUrl: data.assignedStandUrl || null,
     createdAt: data.createdAt || new Date().toISOString(),
     ownerEmail: data.ownerEmail || null,
-  } as any;
+    // Admin lifecycle fields — existing documents without status default to ACTIVE
+    status: data.status || 'ACTIVE',
+    customerFlowEnabled: data.customerFlowEnabled !== false, // true by default
+    adminNotes: data.adminNotes || null,
+    approvedAt: data.approvedAt || null,
+    approvedBy: data.approvedBy || null,
+    rejectedAt: data.rejectedAt || null,
+    rejectedReason: data.rejectedReason || null,
+    suspendedAt: data.suspendedAt || null,
+    suspendedBy: data.suspendedBy || null,
+    suspendedReason: data.suspendedReason || null,
+    archivedAt: data.archivedAt || null,
+    archivedBy: data.archivedBy || null,
+    normalizedCategory: data.normalizedCategory || null,
+    needsAiRegeneration: data.needsAiRegeneration === true,
+    needsTagRegeneration: data.needsTagRegeneration === true,
+  } as BusinessRecord;
+}
+
+// ─────────────────────────────────────────────
+// Business AI Profile helper
+// ─────────────────────────────────────────────
+export async function saveBusinessAiProfile(
+  businessId: string,
+  aiProfile: BusinessAiProfile,
+  reviewTags?: string[]
+): Promise<void> {
+  try {
+    const docRef = doc(db, 'businesses', businessId);
+    const updatePayload: any = {
+      aiProfile,
+      updatedAt: new Date().toISOString(),
+    };
+    if (reviewTags && reviewTags.length > 0) {
+      updatePayload.reviewTags = reviewTags;
+      updatePayload.positiveTags = JSON.stringify(reviewTags);
+    }
+    await setDoc(docRef, updatePayload, { merge: true });
+
+    // Also update local JSON cache
+    const existing = await getBusinessById(businessId);
+    if (existing) {
+      saveJsonBusiness({
+        ...existing,
+        aiProfile,
+        ...(reviewTags ? { reviewTags, positiveTags: JSON.stringify(reviewTags) } : {}),
+      });
+    }
+  } catch (err) {
+    console.warn('saveBusinessAiProfile warning:', err);
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -329,3 +419,189 @@ export async function saveFeedbackToFirebase(feedback: FeedbackRecord): Promise<
   }
 }
 
+// ─────────────────────────────────────────────
+// Review History helpers
+// ─────────────────────────────────────────────
+export async function saveReviewToHistory(reviewRecord: ReviewHistoryRecord): Promise<void> {
+  try {
+    const docRef = doc(db, 'reviewHistory', reviewRecord.id);
+    await setDoc(docRef, reviewRecord, { merge: true });
+  } catch (err) {
+    console.warn('saveReviewToHistory warning:', err);
+  }
+}
+
+export async function updateReviewHistoryStatus(
+  reviewId: string,
+  status: 'generated' | 'copied' | 'redirected'
+): Promise<void> {
+  try {
+    const docRef = doc(db, 'reviewHistory', reviewId);
+    await updateDoc(docRef, { status, updatedAt: new Date().toISOString() });
+  } catch (err) {
+    console.warn('updateReviewHistoryStatus warning:', err);
+  }
+}
+
+export async function getReviewHistory(businessId: string, limitCount: number = 100): Promise<ReviewHistoryRecord[]> {
+  try {
+    const colRef = collection(db, 'reviewHistory');
+    const q = query(colRef, where('businessId', '==', businessId));
+    const snapshot = await getDocs(q);
+    const list: ReviewHistoryRecord[] = [];
+    snapshot.forEach((d) => {
+      const data = d.data();
+      list.push({
+        id: data.id || d.id,
+        businessId: data.businessId,
+        businessSlug: data.businessSlug,
+        businessName: data.businessName,
+        generatedReview: data.generatedReview,
+        selectedTags: Array.isArray(data.selectedTags) ? data.selectedTags : [],
+        rating: Number(data.rating) || 5,
+        language: data.language || 'English',
+        customNotes: data.customNotes || '',
+        timestamp: data.timestamp || new Date().toISOString(),
+        status: data.status || 'generated',
+      });
+    });
+
+    // Sort in memory by timestamp descending
+    list.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    return list.slice(0, limitCount);
+  } catch (err) {
+    console.warn('getReviewHistory warning:', err);
+    return [];
+  }
+}
+
+
+export function sanitizeBusinessRecord(biz: any): BusinessRecord {
+  if (!biz) return biz;
+  const copy = { ...biz };
+  delete copy.password;
+  delete copy.passwordHash;
+  delete copy.ownerPasswordHash;
+  delete copy.token;
+  delete copy.apiKey;
+  delete copy.secret;
+  return copy as BusinessRecord;
+}
+
+export interface PaginatedBusinessesQuery {
+  page?: number;
+  limit?: number;
+  status?: string;
+  category?: string;
+  search?: string;
+  sortBy?: 'createdAt' | 'name' | 'rating' | string;
+  sortOrder?: 'asc' | 'desc';
+}
+
+export interface PaginatedBusinessesResult {
+  businesses: BusinessRecord[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+    hasMore: boolean;
+  };
+  counts: {
+    all: number;
+    pending: number;
+    active: number;
+    suspended: number;
+    rejected: number;
+    archived: number;
+  };
+}
+
+export async function getPaginatedBusinessesFromFirebase(
+  options: PaginatedBusinessesQuery = {}
+): Promise<PaginatedBusinessesResult> {
+  const page = Math.max(1, Number(options.page) || 1);
+  const limitNum = Math.min(100, Math.max(1, Number(options.limit) || 25));
+  const search = (options.search || '').trim().toLowerCase();
+  const statusFilter = (options.status || 'ALL').toUpperCase();
+  const categoryFilter = options.category || 'ALL';
+  const sortBy = options.sortBy || 'createdAt';
+  const sortOrder = options.sortOrder || 'desc';
+
+  const colRef = collection(db, 'businesses');
+
+  // 1. Parallel Status Count Aggregations directly in Firestore (NO document downloads)
+  const [allSnap, pendingSnap, activeSnap, suspendedSnap, rejectedSnap, archivedSnap] = await Promise.all([
+    getCountFromServer(colRef).catch(() => ({ data: () => ({ count: 0 }) })),
+    getCountFromServer(query(colRef, where('status', '==', 'PENDING'))).catch(() => ({ data: () => ({ count: 0 }) })),
+    getCountFromServer(query(colRef, where('status', '==', 'ACTIVE'))).catch(() => ({ data: () => ({ count: 0 }) })),
+    getCountFromServer(query(colRef, where('status', '==', 'SUSPENDED'))).catch(() => ({ data: () => ({ count: 0 }) })),
+    getCountFromServer(query(colRef, where('status', '==', 'REJECTED'))).catch(() => ({ data: () => ({ count: 0 }) })),
+    getCountFromServer(query(colRef, where('status', '==', 'ARCHIVED'))).catch(() => ({ data: () => ({ count: 0 }) })),
+  ]);
+
+  const counts = {
+    all: allSnap.data().count,
+    pending: pendingSnap.data().count,
+    active: activeSnap.data().count,
+    suspended: suspendedSnap.data().count,
+    rejected: rejectedSnap.data().count,
+    archived: archivedSnap.data().count,
+  };
+
+  // 2. Construct targeted Firestore query with server-side filters & limits
+  let baseQuery = colRef as any;
+
+  if (statusFilter !== 'ALL') {
+    baseQuery = query(baseQuery, where('status', '==', statusFilter));
+  }
+  if (categoryFilter !== 'ALL') {
+    baseQuery = query(baseQuery, where('category', '==', categoryFilter));
+  }
+
+  const totalSnap = await getCountFromServer(baseQuery).catch(() => ({ data: () => ({ count: 0 }) }));
+  let total = totalSnap.data().count;
+
+  let docsList: any[] = [];
+
+  if (search) {
+    // Search condition: Range query / bounded subset
+    const boundedQuery = query(baseQuery, limit(200));
+    const snapshot = await getDocs(boundedQuery);
+    docsList = snapshot.docs.map(d => formatBusinessDoc(d.id, d.data()));
+    
+    docsList = docsList.filter(b => {
+      const mName = (b.name || '').toLowerCase().includes(search);
+      const mSlug = (b.slug || '').toLowerCase().includes(search);
+      const mEmail = (b.email || '').toLowerCase().includes(search);
+      const mCity = (b.city || '').toLowerCase().includes(search);
+      const mCat = (b.category || '').toLowerCase().includes(search);
+      return mName || mSlug || mEmail || mCity || mCat;
+    });
+
+    total = docsList.length;
+    docsList = docsList.slice((page - 1) * limitNum, page * limitNum);
+  } else {
+    // NON-SEARCH DIRECT FIRESTORE QUERY: Limit (page * limitNum) directly at database level!
+    const sortField = sortBy === 'name' ? 'name' : 'createdAt';
+    const paginatedQuery = query(baseQuery, orderBy(sortField, sortOrder as any), limit(page * limitNum));
+    const snapshot = await getDocs(paginatedQuery);
+    const allFetched = snapshot.docs.map(d => formatBusinessDoc(d.id, d.data()));
+    docsList = allFetched.slice((page - 1) * limitNum, page * limitNum);
+  }
+
+  const sanitizedBusinesses = docsList.map(b => sanitizeBusinessRecord(b));
+  const totalPages = Math.ceil(total / limitNum) || 1;
+
+  return {
+    businesses: sanitizedBusinesses,
+    pagination: {
+      page: page,
+      limit: limitNum,
+      total: total,
+      totalPages: totalPages,
+      hasMore: page < totalPages,
+    },
+    counts: counts,
+  };
+}

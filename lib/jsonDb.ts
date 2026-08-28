@@ -1,20 +1,105 @@
 import fs from 'fs';
 import path from 'path';
 
+export interface LocationContext {
+  city?: string;
+  area?: string;
+  landmark?: string;
+  formattedAddress?: string;
+}
+
+export interface BusinessAiProfile {
+  businessPersonality: string;
+  customerType: string[];
+  uniqueSellingPoints: string[];
+  importantFeatures: string[];
+  commonCustomerExperiences: string[];
+  preferredReviewStyle: string;
+  wordsToUse: string[];
+  wordsToAvoid: string[];
+  reviewExamples?: string[];
+  suggestedKeywords?: string[];
+  locationContext?: LocationContext | null;
+  lastGeneratedAt?: string;
+}
+
+export interface ReviewHistoryRecord {
+  id: string;
+  businessId: string;
+  businessSlug?: string;
+  businessName?: string;
+  generatedReview: string;
+  selectedTags: string[];
+  rating: number;
+  language?: string;
+  customNotes?: string;
+  timestamp: string;
+  status: 'generated' | 'copied' | 'redirected';
+  durationMs?: number;
+  fallbackUsed?: boolean;
+  success?: boolean;
+}
+
+export interface CompetitorInsightRecord {
+  id: string;
+  businessId: string;
+  competitorName: string;
+  strengths: string[];
+  weaknesses: string[];
+  opportunityKeywords: string[];
+  recommendedActions: string[];
+  lastAnalyzedAt: string;
+}
+
+export type BusinessStatus = 'PENDING' | 'ACTIVE' | 'SUSPENDED' | 'REJECTED' | 'ARCHIVED';
+
 export interface BusinessRecord {
   id: string;
-  loginId?: string;        // NEW: unique store login username (e.g. "bella_pizza")
-  passwordHash?: string;   // NEW: bcrypt-hashed password stored server-side
+  loginId?: string;        // unique store login username (e.g. "bella_pizza")
+  passwordHash?: string;   // bcrypt-hashed password stored server-side
   name: string;
   slug: string;
   category: string;
+  city?: string | null;
+  area?: string | null;
+  landmark?: string | null;
+  location?: string | null;
+  locationContext?: LocationContext | null;
   description?: string | null;
+  services?: string | string[] | null;
+  website?: string | null;
+  instagram?: string | null;
   googleReviewUrl?: string | null;
   googlePlaceId?: string | null;
   positiveTags: string;
-  keywords?: string;       // NEW: highlight keywords for AI (e.g. "wood-fired pizza")
+  reviewTags?: string[];
+  keywords?: string;       // highlight keywords for AI
+  aiProfile?: BusinessAiProfile | null;
+  aiLength?: string;
+  aiLanguage?: string;
+  aiTone?: string;
+  aiHumanize?: boolean;
+  aiCustomPrompt?: string | null;
   createdAt: string;
   ownerEmail?: string | null;
+  assignedStandNumber?: number | null;
+  assignedStandUrl?: string | null;
+  // ── Admin lifecycle fields (safe defaults: ACTIVE for existing data) ──
+  status?: BusinessStatus;
+  customerFlowEnabled?: boolean;  // disable NFC/QR flow for this business
+  adminNotes?: string | null;
+  approvedAt?: string | null;
+  approvedBy?: string | null;
+  rejectedAt?: string | null;
+  rejectedReason?: string | null;
+  suspendedAt?: string | null;
+  suspendedBy?: string | null;
+  suspendedReason?: string | null;
+  archivedAt?: string | null;
+  archivedBy?: string | null;
+  normalizedCategory?: string | null;
+  needsAiRegeneration?: boolean;
+  needsTagRegeneration?: boolean;
 }
 
 export interface QrStandRecord {
