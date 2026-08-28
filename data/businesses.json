@@ -5,28 +5,28 @@
     "category": "Pet Supplies",
     "normalizedCategory": "PET_SHOP",
     "aiProfile": {
-      "wordsToAvoid": [
-        "bad"
-      ],
+      "businessPersonality": "Original Custom Pet Care Personality",
       "uniqueSellingPoints": [
         "Organic Raw Pet Food"
-      ],
-      "importantFeatures": [
-        "Grooming Station"
       ],
       "customerType": [
         "Local Pet Parents"
       ],
-      "commonCustomerExperiences": [
-        "Friendly assistance"
-      ],
-      "preferredReviewStyle": "Authentic customer tone",
       "lastGeneratedAt": "2026-01-01T00:00:00.000Z",
+      "wordsToAvoid": [
+        "bad"
+      ],
       "wordsToUse": [
         "organic",
         "healthy treats"
       ],
-      "businessPersonality": "Original Custom Pet Care Personality"
+      "importantFeatures": [
+        "Grooming Station"
+      ],
+      "preferredReviewStyle": "Authentic customer tone",
+      "commonCustomerExperiences": [
+        "Friendly assistance"
+      ]
     },
     "reviewTags": [
       "Organic Food",
@@ -259,6 +259,29 @@
     ],
     "keywords": "pohe, upma",
     "aiProfile": {
+      "businessPersonality": "Welcoming, dependable, customer-focused pet shop",
+      "uniqueSellingPoints": [
+        "Attentive and friendly customer service",
+        "Consistently high quality across all pet shop offerings",
+        "Welcoming atmosphere and fair transparent pricing"
+      ],
+      "customerType": [
+        "Local residents",
+        "First-time visitors",
+        "Regular customers",
+        "Value-conscious customers"
+      ],
+      "reviewExamples": [
+        "Great experience at sai pet shop! The team was helpful and everything went smoothly.",
+        "Loved the service and friendly atmosphere at sai pet shop. 5 stars!"
+      ],
+      "lastGeneratedAt": "2026-08-27T11:18:48.230Z",
+      "wordsToAvoid": [
+        "exceptional establishment",
+        "synergistic organization",
+        "top-notch establishment",
+        "world-class conglomerate"
+      ],
       "wordsToUse": [
         "friendly",
         "welcoming",
@@ -267,29 +290,10 @@
         "worth visiting",
         "great quality"
       ],
-      "wordsToAvoid": [
-        "exceptional establishment",
-        "synergistic organization",
-        "top-notch establishment",
-        "world-class conglomerate"
-      ],
-      "uniqueSellingPoints": [
-        "Attentive and friendly customer service",
-        "Consistently high quality across all pet shop offerings",
-        "Welcoming atmosphere and fair transparent pricing"
-      ],
-      "preferredReviewStyle": "Authentic, friendly conversational tone sharing real personal highlights",
       "importantFeatures": [
         "pet food",
         "pet supplies",
         "accessories"
-      ],
-      "lastGeneratedAt": "2026-08-27T11:18:48.230Z",
-      "businessPersonality": "Welcoming, dependable, customer-focused pet shop",
-      "commonCustomerExperiences": [
-        "Quick and hassle-free assistance upon arrival",
-        "Warm interactions with knowledgeable team members",
-        "Leaving satisfied and returning regularly"
       ],
       "suggestedKeywords": [
         "sai pet shop",
@@ -298,15 +302,11 @@
         "pet supplies",
         "accessories"
       ],
-      "reviewExamples": [
-        "Great experience at sai pet shop! The team was helpful and everything went smoothly.",
-        "Loved the service and friendly atmosphere at sai pet shop. 5 stars!"
-      ],
-      "customerType": [
-        "Local residents",
-        "First-time visitors",
-        "Regular customers",
-        "Value-conscious customers"
+      "preferredReviewStyle": "Authentic, friendly conversational tone sharing real personal highlights",
+      "commonCustomerExperiences": [
+        "Quick and hassle-free assistance upon arrival",
+        "Warm interactions with knowledgeable team members",
+        "Leaving satisfied and returning regularly"
       ]
     },
     "aiLength": "MEDIUM",
@@ -655,9 +655,11 @@
     ],
     "keywords": "",
     "aiProfile": {
-      "reviewExamples": [
-        "Had a really nice visit to Audit Bistro! The team was super welcoming and everything was handled efficiently. 5 stars!",
-        "Consistently great experience at Audit Bistro. Love the service and friendly vibe. Definitely coming back!"
+      "businessPersonality": "Welcoming, dependable, customer-focused Bistro",
+      "uniqueSellingPoints": [
+        "Attentive and friendly customer service",
+        "Consistently high quality across all Bistro offerings",
+        "Welcoming atmosphere and fair transparent pricing"
       ],
       "customerType": [
         "Local residents",
@@ -665,13 +667,18 @@
         "Regular customers",
         "Value-conscious shoppers"
       ],
-      "importantFeatures": [
-        "Bistro",
-        "Customer Support",
-        "Quality Service"
+      "reviewExamples": [
+        "Had a really nice visit to Audit Bistro! The team was super welcoming and everything was handled efficiently. 5 stars!",
+        "Consistently great experience at Audit Bistro. Love the service and friendly vibe. Definitely coming back!"
       ],
-      "businessPersonality": "Welcoming, dependable, customer-focused Bistro",
-      "preferredReviewStyle": "Authentic, friendly conversational tone sharing real personal highlights",
+      "lastGeneratedAt": "2026-08-21T16:24:30.375Z",
+      "wordsToAvoid": [
+        "exceptional establishment",
+        "highly commendable organization",
+        "synergistic",
+        "paradigm",
+        "luxurious conglomerate"
+      ],
       "wordsToUse": [
         "friendly",
         "welcoming",
@@ -680,27 +687,20 @@
         "worth visiting",
         "great quality"
       ],
-      "wordsToAvoid": [
-        "exceptional establishment",
-        "highly commendable organization",
-        "synergistic",
-        "paradigm",
-        "luxurious conglomerate"
-      ],
-      "lastGeneratedAt": "2026-08-21T16:24:30.375Z",
-      "commonCustomerExperiences": [
-        "Quick and hassle-free service upon arrival",
-        "Warm interactions with knowledgeable team members",
-        "Leaving satisfied and recommending to friends"
-      ],
-      "uniqueSellingPoints": [
-        "Attentive and friendly customer service",
-        "Consistently high quality across all Bistro offerings",
-        "Welcoming atmosphere and fair transparent pricing"
+      "importantFeatures": [
+        "Bistro",
+        "Customer Support",
+        "Quality Service"
       ],
       "suggestedKeywords": [
         "Audit Bistro",
         "Bistro"
+      ],
+      "preferredReviewStyle": "Authentic, friendly conversational tone sharing real personal highlights",
+      "commonCustomerExperiences": [
+        "Quick and hassle-free service upon arrival",
+        "Warm interactions with knowledgeable team members",
+        "Leaving satisfied and recommending to friends"
       ]
     },
     "aiLength": "MEDIUM",
