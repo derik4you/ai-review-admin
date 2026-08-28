@@ -26,3 +26,7 @@ yarn-error.log*
 *.pem
 .vscode/
 .idea/
+
+# Environment files with secrets
+.env
+.env.*

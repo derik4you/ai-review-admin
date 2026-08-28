@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './globals.css';
@@ -11,6 +11,7 @@ import {
   Sparkles,
   LogOut,
   Menu,
+  X,
   Tags,
   BarChart3,
   Sliders,
@@ -18,8 +19,15 @@ import {
 } from 'lucide-react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const pathname = usePathname();
+
+  // On desktop screens (>=768px), open sidebar by default
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      setSidebarOpen(true);
+    }
+  }, []);
 
   const isLoginPage = pathname?.startsWith('/login');
 
@@ -48,38 +56,44 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="min-h-screen bg-[#f8f9fa] text-[#202124] flex flex-col">
           {/* Top Header Navigation Bar */}
           <header className="bg-white border-b border-[#dadce0] sticky top-0 z-40 shadow-xs">
-            <div className="w-full px-4 py-2.5 flex items-center justify-between gap-4">
-              <div className="flex items-center space-x-3">
+            <div className="w-full px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2">
+              <div className="flex items-center space-x-2.5">
                 <button
                   onClick={() => setSidebarOpen(!sidebarOpen)}
-                  className="p-2 rounded-full hover:bg-[#f1f3f4] text-[#5f6368] transition-colors"
+                  className="p-2 rounded-xl hover:bg-[#f1f3f4] text-[#5f6368] transition-colors focus:outline-none"
                   title="Toggle Menu"
+                  aria-label="Toggle Menu"
                 >
-                  <Menu className="w-5 h-5" />
+                  {sidebarOpen ? <X className="w-5 h-5 text-[#202124]" /> : <Menu className="w-5 h-5 text-[#202124]" />}
                 </button>
 
-                <Link href="/" className="flex items-center space-x-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#1a73e8] via-[#9b51e0] to-[#ea4335] flex items-center justify-center text-white font-bold shadow-xs">
+                <Link href="/" className="flex items-center space-x-2">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#1a73e8] via-[#9333ea] to-[#ea4335] flex items-center justify-center text-white font-bold shadow-xs flex-shrink-0">
                     <Sparkles className="w-4 h-4 text-white" />
                   </div>
-                  <span className="font-extrabold text-lg text-[#202124] font-sans tracking-tight">
-                    AI Review System <span className="text-[#1a73e8]">Admin Panel</span>
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="font-extrabold text-sm sm:text-base text-[#202124] tracking-tight leading-tight">
+                      ReviewEasy <span className="text-[#1a73e8]">Admin</span>
+                    </span>
+                    <span className="text-[10px] text-[#5f6368] font-semibold tracking-tight hidden xs:block sm:block">
+                      Platform Control
+                    </span>
+                  </div>
                 </Link>
-
-                <span className="hidden sm:inline-flex text-xs px-2.5 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] font-bold border border-[#d2e3fc]">
-                  Admin Control Center
-                </span>
               </div>
 
-              {/* Right Action Icons */}
-              <div className="flex items-center space-x-2 sm:space-x-3">
+              {/* Right Actions */}
+              <div className="flex items-center space-x-2">
+                <span className="hidden sm:inline-flex text-[11px] px-2.5 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] font-bold border border-[#d2e3fc]">
+                  Super Admin
+                </span>
+
                 <Link
                   href="/api/auth/logout"
-                  className="py-1.5 px-3 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-xs font-semibold flex items-center space-x-1.5 text-[#5f6368] transition-colors"
+                  className="py-1.5 px-3 rounded-lg border border-[#dadce0] hover:bg-[#f1f3f4] text-xs font-semibold flex items-center space-x-1 text-[#5f6368] transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Sign Out</span>
+                  <span className="hidden xs:inline sm:inline">Sign Out</span>
                 </Link>
               </div>
             </div>
@@ -87,17 +101,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* Main Layout Body */}
           <div className="flex-1 flex w-full relative">
+            {/* Mobile Backdrop */}
             {sidebarOpen && (
               <div
                 onClick={() => setSidebarOpen(false)}
-                className="fixed inset-0 bg-slate-900/30 z-20 md:hidden backdrop-blur-xs"
+                className="fixed inset-0 bg-slate-900/40 z-30 md:hidden backdrop-blur-xs transition-opacity"
               />
             )}
 
             {/* Left Navigation Drawer */}
             <aside
-              className={`bg-white border-r border-[#dadce0] transition-all duration-300 ease-in-out flex flex-col justify-between z-30 fixed md:sticky top-[53px] h-[calc(100vh-53px)] ${
-                sidebarOpen ? 'w-64 translate-x-0' : 'w-0 -translate-x-full md:translate-x-0 md:w-16'
+              className={`bg-white border-r border-[#dadce0] transition-all duration-300 ease-in-out flex flex-col justify-between z-40 fixed md:sticky top-[53px] h-[calc(100vh-53px)] ${
+                sidebarOpen ? 'w-64 translate-x-0 shadow-xl md:shadow-none' : '-translate-x-full md:translate-x-0 md:w-16'
               }`}
             >
               <div className="p-3 space-y-6 overflow-y-auto">
@@ -114,6 +129,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <Link
                         key={item.href}
                         href={item.href}
+                        onClick={() => {
+                          if (typeof window !== 'undefined' && window.innerWidth < 768) {
+                            setSidebarOpen(false);
+                          }
+                        }}
                         className={`flex items-center justify-between px-3 py-2.5 rounded-xl transition-all duration-200 group text-xs font-medium ${
                           isActive
                             ? 'bg-[#e8f0fe] text-[#1a73e8] font-bold shadow-xs'
@@ -148,7 +168,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   {sidebarOpen && (
                     <div className="space-y-0.5 truncate">
                       <p className="text-xs font-bold text-[#202124] truncate">Super Admin Console</p>
-                      <p className="text-[10px] text-[#137333] font-bold font-mono">prathameshpvadde2004</p>
+                      <p className="text-[10px] text-[#137333] font-bold font-mono truncate">prathameshpvadde2004</p>
                     </div>
                   )}
                 </div>
@@ -156,7 +176,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </aside>
 
             {/* Main Content Body */}
-            <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8">
+            <main className="flex-1 min-w-0 p-3 sm:p-6 lg:p-8">
               {children}
             </main>
           </div>
