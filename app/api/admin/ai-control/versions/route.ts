@@ -1,12 +1,7 @@
 /**
  * app/api/admin/ai-control/versions/route.ts
  * ─────────────────────────────────────────────────────────────────────────────
- * POST endpoint to create a new prompt version draft or duplicate an existing version.
- *
- * Rules:
- *  - Never overwrite an active version in place
- *  - Newly created versions are drafts (active: false)
- *  - Allowed for ADMIN, SUPER_ADMIN
+ * GET & POST endpoints for AI prompt versions.
  */
 
 import { NextResponse } from 'next/server';
@@ -18,6 +13,24 @@ import {
 } from '@/lib/adminDb';
 
 export const dynamic = 'force-dynamic';
+
+export async function GET() {
+  try {
+    const session = await getAdminSession();
+    if (!session || !hasAdminPermission(session, 'SUPPORT')) {
+      return NextResponse.json({ error: 'Unauthorized: Admin access required.' }, { status: 401 });
+    }
+
+    const versions = await getAllPromptVersions();
+    return NextResponse.json({
+      success: true,
+      versions,
+    });
+  } catch (error: any) {
+    console.error('GET /api/admin/ai-control/versions error:', error);
+    return NextResponse.json({ error: 'Failed to fetch prompt versions' }, { status: 500 });
+  }
+}
 
 export async function POST(req: Request) {
   try {

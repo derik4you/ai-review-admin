@@ -5,34 +5,36 @@
     "category": "Pet Supplies",
     "normalizedCategory": "PET_SHOP",
     "aiProfile": {
-      "businessPersonality": "Original Custom Pet Care Personality",
-      "uniqueSellingPoints": [
-        "Organic Raw Pet Food"
-      ],
-      "customerType": [
-        "Local Pet Parents"
-      ],
-      "lastGeneratedAt": "2026-01-01T00:00:00.000Z",
-      "wordsToAvoid": [
-        "bad"
-      ],
+      "preferredReviewStyle": "Authentic customer tone",
       "wordsToUse": [
         "organic",
         "healthy treats"
       ],
+      "customerType": [
+        "Local Pet Parents"
+      ],
+      "businessPersonality": "Original Custom Pet Care Personality",
+      "wordsToAvoid": [
+        "bad"
+      ],
+      "uniqueSellingPoints": [
+        "Organic Raw Pet Food"
+      ],
       "importantFeatures": [
         "Grooming Station"
       ],
-      "preferredReviewStyle": "Authentic customer tone",
       "commonCustomerExperiences": [
         "Friendly assistance"
-      ]
+      ],
+      "lastGeneratedAt": "2026-01-01T00:00:00.000Z"
     },
     "reviewTags": [
-      "Organic Food",
-      "Staff Guidance",
-      "Pet Hygiene",
-      "Great Pricing"
+      "Pet Food Selection",
+      "Product Variety",
+      "Helpful Staff",
+      "Fair Pricing",
+      "Clean Facility",
+      "Quick Checkout"
     ],
     "status": "ACTIVE",
     "customerFlowEnabled": true,
@@ -50,7 +52,7 @@
     "instagram": null,
     "googleReviewUrl": null,
     "googlePlaceId": null,
-    "positiveTags": "[\"Great Service\",\"Friendly Staff\"]",
+    "positiveTags": "[\"Pet Food Selection\",\"Product Variety\",\"Helpful Staff\",\"Fair Pricing\",\"Clean Facility\",\"Quick Checkout\"]",
     "keywords": "",
     "aiLength": "MEDIUM",
     "aiLanguage": "English",
@@ -61,8 +63,8 @@
     "assignedStandUrl": null,
     "ownerEmail": null,
     "adminNotes": null,
-    "approvedAt": null,
-    "approvedBy": null,
+    "approvedAt": "2026-08-28T10:24:13.066Z",
+    "approvedBy": "prathameshpvadde2004@gmail.com",
     "rejectedAt": null,
     "rejectedReason": null,
     "suspendedAt": null,
